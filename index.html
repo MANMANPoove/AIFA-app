@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!--
+    Replaced at build time by the `--base-href` argument. The app is served
+    from /app/ next to the landing page, not from the domain root, so this
+    must not be hard-coded to "/" -- see scripts/build-web.ps1.
+  -->
+  <base href="/AIFA-app/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="AIFA — личный финансовый помощник. Записывайте траты одной фразой.">
+  <meta name="theme-color" content="#E7E4DD">
+
+  <!--
+    google_sign_in_web reads the client id from this tag rather than from the
+    Dart side, so the value has to reach the HTML somehow. The placeholder is
+    substituted by scripts/build-web.ps1, which takes the id from
+    AppConfig.googleServerClientId in app/lib/core/config.dart -- there is
+    exactly one place to edit, and the build fails loudly if the substitution
+    does not happen. Client ids are public by design; the secret lives on the
+    backend.
+  -->
+  <meta name="google-signin-client_id" content="515094985652-sir8n4k4g1bu5n1gq97bs1hjg4k63s0f.apps.googleusercontent.com">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="AIFA">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>AIFA</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    /*
+      The engine and app bundle are a few megabytes, so there is a real pause
+      between the page arriving and the first Flutter frame. Without something
+      here that pause is a blank white rectangle, which reads as a broken link
+      -- especially coming from a button on the landing page.
+    */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #E7E4DD;
+    }
+    #boot {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1C1917;
+      transition: opacity .35s ease;
+    }
+    #boot.done { opacity: 0; pointer-events: none; }
+    #boot .ring {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 3px solid rgba(28, 25, 23, .15);
+      border-top-color: #D98E63;
+      animation: spin 900ms linear infinite;
+    }
+    #boot .label {
+      font-size: 14px;
+      letter-spacing: .04em;
+      color: #6b6560;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      #boot .ring { animation-duration: 3s; }
+    }
+  </style>
+</head>
+<body>
+  <div id="boot">
+    <div class="ring"></div>
+    <div class="label">Загружаем AIFA…</div>
+  </div>
+
+  <script>
+    // Startup breadcrumbs from Dart (see core/platform/boot_beacon.dart). Read
+    // window.__aifaBoot in the console to see how far main() got: the last
+    // entry names the step that never finished.
+    window.__aifaBoot = [];
+    window.__aifaBootPush = function (entry) { window.__aifaBoot.push(entry); };
+  </script>
+  <script>
+    (function () {
+      var boot = document.getElementById('boot');
+      if (!boot) return;
+
+      function dismiss() {
+        pauseCountdown();
+        boot.classList.add('done');
+        setTimeout(function () { boot.remove(); }, 400);
+      }
+
+      // Flutter fires this on the window once it has painted; fading the
+      // splash then avoids a flash of half-built UI underneath it.
+      window.addEventListener('flutter-first-frame', dismiss);
+
+      // The splash covers the whole viewport, so if that event never arrives
+      // it hides the app instead of merely preceding it. Watch for the engine
+      // actually building a scene as a second, independent signal.
+      // Waiting for the scene host to have CHILDREN, not merely to exist: the
+      // element is created while the renderer starts up, long before anything
+      // is drawn into it, so keying off its presence would pull the splash
+      // away and reveal an empty canvas.
+      var observer = new MutationObserver(function () {
+        var host = document.querySelector('flt-scene-host');
+        if (host && host.children.length > 0) {
+          observer.disconnect();
+          dismiss();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      // Last resort: say something instead of spinning forever. A renderer
+      // that has not started after this long is not going to.
+      //
+      // The countdown only runs while the page is actually visible. Flutter
+      // paints from requestAnimationFrame, which browsers do not fire for a
+      // hidden or background tab -- so a perfectly healthy app opened in a
+      // background tab would otherwise accuse itself of having failed by the
+      // time the user switched to it.
+      var timer = null;
+
+      function giveUp() {
+        if (!document.getElementById('boot')) return;
+        var label = boot.querySelector('.label');
+        if (label) {
+          label.innerHTML =
+            'Не удалось загрузить приложение.<br>Обновите страницу — ' +
+            'если не помогает, попробуйте другой браузер.';
+        }
+        var ring = boot.querySelector('.ring');
+        if (ring) ring.style.display = 'none';
+      }
+
+      function startCountdown() {
+        if (timer === null && !document.hidden) {
+          timer = setTimeout(giveUp, 25000);
+        }
+      }
+
+      function pauseCountdown() {
+        if (timer !== null) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      }
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          pauseCountdown();
+        } else {
+          startCountdown();
+        }
+      });
+      startCountdown();
+    })();
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
