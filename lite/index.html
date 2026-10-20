@@ -170,6 +170,94 @@
       startCountdown();
     })();
   </script>
+  <script>
+    // Keyboard watchdog. Flutter web sizes the app from the visual viewport,
+    // but while a text field is being edited on a phone it deliberately keeps
+    // the OLD size and reports the keyboard as an inset instead. If the
+    // viewport changed at an unlucky moment -- a frame rendered after the
+    // field lost focus but before the keyboard finished sliding away, or the
+    // keyboard was hidden while the field kept focus (Android back key,
+    // Telegram's in-app browser) -- the engine is left holding the
+    // keyboard-sized height, and the browser never sends another resize. The
+    // app then sits in the top half of the screen above an empty grey strip
+    // until something else resizes the window.
+    //
+    // So: whenever the app's box disagrees with the size the engine itself
+    // would measure, and nothing is being typed, replay a resize event. The
+    // engine's own handler then re-measures. A short-height box with a field
+    // still focused but the keyboard already gone can only be stale, so that
+    // field is blurred first (the keyboard is not on screen anyway).
+    (function () {
+      var vv = window.visualViewport;
+      if (!vv) return;
+      var ios = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      // The engine only freezes its size for the keyboard on phones.
+      var mobile = ios || /Android/i.test(navigator.userAgent);
+      var retries = 0;
+
+      function editingElement() {
+        var el = document.activeElement;
+        if (!el || !el.closest) return null;
+        if (!el.closest('flt-text-editing-host')) return null;
+        return /^(INPUT|TEXTAREA)$/.test(el.tagName) ? el : null;
+      }
+
+      function check() {
+        var view = document.querySelector('flutter-view');
+        if (!view) return;
+        var box = view.getBoundingClientRect();
+        // The same numbers the engine's FullPageDimensionsProvider reads.
+        var h = ios ? document.documentElement.clientHeight : vv.height;
+        var w = ios ? document.documentElement.clientWidth : vv.width;
+        var editing = editingElement();
+        var stale;
+        if (editing && !mobile) return;
+        if (editing) {
+          // Mid-edit the box is SUPPOSED to stay taller than the viewport
+          // (keyboard up). Shorter than the viewport is never right.
+          stale = box.height < h - 2;
+          if (stale) editing.blur();
+        } else {
+          stale = Math.abs(box.height - h) > 2 || Math.abs(box.width - w) > 2;
+        }
+        if (!stale) {
+          retries = 0;
+          return;
+        }
+        // Bounded, so a layout the engine measures differently from us can
+        // never turn this into a resize loop.
+        if (retries >= 3) return;
+        retries++;
+        vv.dispatchEvent(new Event('resize'));
+      }
+
+      var pending = [];
+      function soon() {
+        // The keyboard animates for ~250-400 ms and focus moves before it
+        // ends, so look again after it has settled.
+        pending.forEach(clearTimeout);
+        retries = 0;
+        pending = [120, 450, 1000].map(function (ms) {
+          return setTimeout(check, ms);
+        });
+      }
+
+      vv.addEventListener('resize', function (e) {
+        if (e.isTrusted) soon();
+      });
+      window.addEventListener('resize', soon);
+      window.addEventListener('orientationchange', soon);
+      document.addEventListener('focusout', soon, true);
+      document.addEventListener('focusin', soon, true);
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) soon();
+      });
+      // A low-rate safety net for WebViews that drop the resize event
+      // entirely; when the sizes agree this is one layout read.
+      setInterval(check, 1500);
+    })();
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
