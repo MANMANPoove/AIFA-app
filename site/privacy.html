@@ -77,6 +77,7 @@ html[lang=ru] [data-l=ru],html[lang=kk] [data-l=kk],html[lang=en] [data-l=en]{di
 <h2>Кому передаются данные</h2>
 <ul>
   <li><b>Google</b> — если вы входите через Google (проверка входа) и для доставки push-уведомлений (Firebase Cloud Messaging).</li>
+  <li><b>Служба уведомлений вашего браузера</b> (Google, Apple, Mozilla или Microsoft) — если вы включили уведомления в веб-версии: через неё приходят напоминания. Текст уведомления зашифрован так, что прочитать его может только ваш браузер.</li>
   <li><b>Сервис ИИ OpenAI</b> — если наш собственный разбор не понял сообщение или чек, текст сообщения или снимок чека может быть отправлен в модель OpenAI для распознавания. Имя, почта и история операций при этом не передаются. OpenAI не использует данные, полученные через API, для обучения своих моделей.</li>
   <li><b>Операторы фискальных данных</b> — только при сканировании QR-кода чека, чтобы получить сам чек.</li>
   <li><b>App Store и Google Play</b> — обрабатывают оплату подписки. Магазин сообщает нам только номер покупки, срок подписки и её состояние (продлевается, отменена, возвращена), чтобы открыть Премиум вашему аккаунту; данные вашей карты нам не передаются.</li>
@@ -143,6 +144,7 @@ html[lang=ru] [data-l=ru],html[lang=kk] [data-l=kk],html[lang=en] [data-l=en]{di
 <h2>Деректер кімге беріледі</h2>
 <ul>
   <li><b>Google</b> — Google арқылы кірсеңіз (кіруді тексеру) және push-хабарландыруларды жеткізу үшін (Firebase Cloud Messaging).</li>
+  <li><b>Браузеріңіздің хабарландыру қызметі</b> (Google, Apple, Mozilla не Microsoft) — веб-нұсқада хабарландыруларды қоссаңыз: еске салғыштар сол арқылы келеді. Хабарландыру мәтіні шифрланған, оны тек сіздің браузеріңіз оқи алады.</li>
   <li><b>OpenAI жасанды интеллект қызметі</b> — өз талдауымыз хабарламаны немесе чекті түсінбесе, хабарлама мәтіні немесе чек суреті тану үшін OpenAI моделіне жіберілуі мүмкін. Аты, поштасы және операциялар тарихы берілмейді. OpenAI API арқылы алынған деректерді өз модельдерін оқытуға қолданбайды.</li>
   <li><b>Фискалдық деректер операторлары</b> — тек чектің QR-кодын сканерлегенде, чектің өзін алу үшін.</li>
   <li><b>App Store және Google Play</b> — жазылым төлемін өңдейді. Дүкен бізге тек сатып алу нөмірін, жазылым мерзімін және күйін (ұзартылады, тоқтатылды, қайтарылды) береді, Премиумды аккаунтыңызға қосу үшін; карта деректері бізге берілмейді.</li>
@@ -209,6 +211,7 @@ html[lang=ru] [data-l=ru],html[lang=kk] [data-l=kk],html[lang=en] [data-l=en]{di
 <h2>Who we share it with</h2>
 <ul>
   <li><b>Google</b> — if you sign in with Google (to verify the sign-in) and to deliver push notifications (Firebase Cloud Messaging).</li>
+  <li><b>Your browser's push service</b> (Google, Apple, Mozilla or Microsoft) — if you turn on notifications in the web version: reminders reach you through it. The notification text is encrypted so that only your browser can read it.</li>
   <li><b>OpenAI (AI service)</b> — when our own parser cannot understand a message or receipt, the message text or receipt photo may be sent to an OpenAI model for recognition. Your name, email and transaction history are not sent. OpenAI does not use data received through its API to train its models.</li>
   <li><b>Fiscal data operators</b> — only when you scan a receipt QR code, to fetch that receipt.</li>
   <li><b>App Store and Google Play</b> — process subscription payments. The store tells us only the purchase number, the subscription term and its state (renewing, cancelled, refunded) so we can turn Premium on for your account; your card details are never shared with us.</li>
