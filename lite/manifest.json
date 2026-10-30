@@ -1,13 +1,20 @@
 {
-    "name": "AIFA — личный финансовый помощник",
+    "id": "./",
+    "name": "AIFA — учёт личных финансов",
     "short_name": "AIFA",
-    "start_url": ".",
+    "start_url": "./",
+    "scope": "./",
     "display": "standalone",
     "background_color": "#E7E4DD",
     "theme_color": "#E7E4DD",
-    "description": "Записывайте траты одной фразой. Кошельки, бюджеты, цели, долги и аналитика в одном месте.",
+    "description": "Записывайте траты одной фразой, голосом или фото чека. Кошельки, долги, кредиты и аналитика.",
     "lang": "ru",
-    "orientation": "portrait-primary",
+    "dir": "ltr",
+    "orientation": "portrait",
+    "categories": [
+        "finance",
+        "productivity"
+    ],
     "prefer_related_applications": false,
     "icons": [
         {

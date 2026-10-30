@@ -2,6 +2,23 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<script>
+/* Every visitor goes to start.html, the one-screen page that goes straight
+   to registration (Maksat, 2026-10-29: the short path is the main page now;
+   the 50/50 short-path test is over). This full landing with its demo stays
+   reachable with ?start=landing. ?internal=1 marks the team's own browser,
+   so its visits are left out of the counts (?internal=0 undoes it). Runs
+   before anything renders. */
+(function(){try{
+  var q = new URLSearchParams(location.search), ls = localStorage;
+  if (q.get('internal') === '1') ls.setItem('aifa_internal', '1');
+  if (q.get('internal') === '0') ls.removeItem('aifa_internal');
+}catch(e){}
+try{
+  if (new URLSearchParams(location.search).get('start') === 'landing') return;
+  location.replace('start.html' + location.search + location.hash);
+}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="canonical" href="https://aifa.tail7106db.ts.net/">
 <meta property="og:type" content="website">
@@ -520,6 +537,13 @@ svg{display:block}
 .final .hero-cta{justify-content:center}
 .contact{margin-top:2.6rem;font-family:var(--mono);font-size:.78rem;color:var(--soft-d);letter-spacing:.04em;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.4rem}
 .contact span{user-select:all}
+.ask{margin:3.2rem auto 0;max-width:640px;padding-top:2.4rem;border-top:1px solid var(--hair-d)}
+.ask-p{margin:.6rem auto 0;color:var(--soft-d);font-size:var(--s-1);max-width:46ch}
+.ask-links{margin-top:1.4rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
+.ask-link{display:inline-flex;align-items:baseline;gap:.7rem;min-width:0;max-width:100%;padding:.8rem 1.15rem;border:1px solid var(--hair-d);border-radius:999px;color:var(--on-dark);text-decoration:none;transition:background .2s ease,border-color .2s ease}
+.ask-link:hover,.ask-link:focus-visible{background:rgba(247,243,238,.06);border-color:var(--terra)}
+.ask-k{font:600 .62rem var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+.ask-v{font-weight:600;overflow-wrap:anywhere}
 footer{border-top:1px solid var(--hair-d);padding-block:2rem;font-size:var(--s-1);color:var(--soft-d)}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center}
 
@@ -678,6 +702,10 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
   box-shadow:0 80px 120px -60px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.06) inset,0 0 90px -30px rgba(181,152,119,.25)}
 
 /* ── Calls to action ───────────────────────────────────────────── */
+.inst{margin:1.4rem 0 0}
+.inst a,.foot-inst{color:inherit;opacity:.8;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.inst a:hover,.foot-inst:hover{opacity:1}
+.inst a::after{content:" →"}
 .cta-note{margin-top:.9rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--soft-d)}
 .cta-note::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--terra);margin-right:.55rem;transform:translateY(-1px)}
 .hero h1 q{background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -694,11 +722,20 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
 .wl-form input::placeholder{color:#B3ADA4}
 .wl-form input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(156,123,88,.14)}
 .wl-form .btn{justify-self:start;margin-top:.3rem}
+.wl-msgr{display:grid;gap:.45rem}
+.wl-msgr-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-size:var(--s-1);color:var(--soft);font-weight:500}
+.wl-opt{font-size:.78rem;font-weight:400;color:var(--faint)}
+.wl-seg{display:flex;gap:.3rem;padding:.25rem;background:var(--cream);border:1px solid var(--hair);border-radius:14px;justify-self:start}
+.wl-seg label{display:block;cursor:pointer}
+.wl-seg input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.wl-seg span{display:block;padding:.45rem .95rem;border-radius:10px;font:500 .88rem var(--sans);color:var(--soft);transition:background .2s ease,color .2s ease}
+.wl-seg input:checked+span{background:var(--ink);color:var(--cream)}
+.wl-seg input:focus-visible+span{box-shadow:0 0 0 3px rgba(156,123,88,.35)}
 .wl-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
 .wl-msg{min-height:1.4em;font-size:var(--s-1);color:var(--soft)}
 .wl-msg.ok{color:var(--income-ink)}
 .wl-msg.bad{color:var(--expense)}
-.wl-form.done input,.wl-form.done .btn{opacity:.5;pointer-events:none}
+.wl-form.done input,.wl-form.done .btn,.wl-form.done .wl-seg{opacity:.5;pointer-events:none}
 .wl-fine{font-size:.78rem;color:var(--faint)}
 
 
@@ -830,7 +867,7 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
         <a class="btn magnet" href="https://manmanpoove.github.io/AIFA-app/lite/?signup=1" data-app="signup" target="_blank" rel="noopener"><span data-i18n="cta.signup">Создать аккаунт</span> <svg><use href="#i-arrow"/></svg></a>
         <a class="btn btn--line" href="https://manmanpoove.github.io/AIFA-app/lite/?demo=1" data-app="demo" target="_blank" rel="noopener"><span data-i18n="cta.demo">Демо без регистрации</span></a>
       </div>
-      <p class="cta-note" data-i18n="cta.note">14 дней всё бесплатно, без карты. Демо открывается сразу и работает два часа.</p>
+      <p class="cta-note" data-i18n="cta.note">Демо открывается сразу и работает два часа.</p>
     </div>
   </div>
 </section>
@@ -1143,7 +1180,7 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
       <article class="tier rv">
         <p class="tag" data-i18n="pr.t1">Пробный период</p>
         <h3 data-i18n="pr.free">Две недели всё бесплатно</h3>
-        <p class="price">0 ₸ <small data-i18n="pr.forever">14 дней</small></p>
+        <p class="price"><span id="price-free">0 ₸</span> <small data-i18n="pr.forever">14 дней</small></p>
         <ul>
           <li><svg><use href="#i-check"/></svg><span data-i18n="pr.f1">Все функции, без ограничений</span></li>
           <li><svg><use href="#i-check"/></svg><span data-i18n="pr.f2">Без карты и без оплаты</span></li>
@@ -1155,8 +1192,8 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
       <article class="tier hot rv" style="--d:.08s">
         <p class="tag" data-i18n="pr.t2">Подписка</p>
         <h3>Premium</h3>
-        <p class="price">1 490 ₸ <small data-i18n="pr.month">в месяц</small></p>
-        <p class="per-day" data-i18n="pr.day">около 50 ₸ в день</p>
+        <p class="price"><span id="price-month">1 490 ₸</span> <small data-i18n="pr.month">в месяц</small></p>
+        <p class="per-day" id="price-day" data-i18n="pr.day">около 50 ₸ в день</p>
         <ul>
           <li><svg><use href="#i-check"/></svg><span data-i18n="pr.p1">Всё, что было в пробном периоде</span></li>
           <li><svg><use href="#i-check"/></svg><span data-i18n="pr.p2">Автозапись покупок с телефона</span></li>
@@ -1188,7 +1225,15 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
     <form class="wl-form rv" id="wlform" autocomplete="on" novalidate>
       <p class="wl-badge"><span data-i18n="wl.badge">Идёт набор в следующую группу</span></p>
       <label><span data-i18n="wl.name">Имя</span><input name="name" maxlength="100" autocomplete="name" required></label>
-      <label><span data-i18n="wl.contact">Почта или телефон</span><input name="contact" maxlength="254" autocomplete="email" inputmode="email" data-i18n-ph="wl.ph" placeholder="you@mail.kz или +7 701 …" required></label>
+      <label><span data-i18n="wl.contact">Почта</span><input name="contact" maxlength="254" autocomplete="email" inputmode="email" data-i18n-ph="wl.ph" placeholder="you@mail.kz" required></label>
+      <div class="wl-msgr">
+        <div class="wl-msgr-top"><span id="wlmlab" data-i18n="wl.msgr">WhatsApp или Telegram</span><span class="wl-opt" data-i18n="wl.opt">необязательно</span></div>
+        <div class="wl-seg" role="radiogroup" aria-labelledby="wlmlab">
+          <label><input type="radio" name="messenger" value="whatsapp" checked><span>WhatsApp</span></label>
+          <label><input type="radio" name="messenger" value="telegram"><span>Telegram</span></label>
+        </div>
+        <input name="mcontact" maxlength="64" autocomplete="tel" inputmode="tel" aria-labelledby="wlmlab" placeholder="+7 701 123 45 67">
+      </div>
       <label class="wl-hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
       <button class="btn" type="submit" id="wlbtn"><span data-i18n="cta.wl">Получить ранний доступ</span> <svg><use href="#i-arrow"/></svg></button>
       <p class="wl-msg" id="wlmsg" aria-live="polite"></p>
@@ -1207,6 +1252,15 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
       <a class="btn magnet" href="https://manmanpoove.github.io/AIFA-app/lite/?signup=1" data-app="signup" target="_blank" rel="noopener"><span data-i18n="cta.signup">Создать аккаунт</span> <svg><use href="#i-arrow"/></svg></a>
       <a class="btn btn--line" href="https://manmanpoove.github.io/AIFA-app/lite/?demo=1" data-app="demo" target="_blank" rel="noopener"><span data-i18n="cta.demo">Демо без регистрации</span></a>
     </div>
+    <p class="inst rv"><a href="install.html" data-i18n="cta.inst">Как поставить AIFA иконкой на телефон или компьютер</a></p>
+    <div class="ask rv" id="contacts">
+      <p class="eyebrow" data-i18n="ct.eb">Вопросы и предложения</p>
+      <p class="ask-p" data-i18n="ct.p">Напишите нам, если что-то непонятно, не работает или есть идея. Отвечаем лично.</p>
+      <div class="ask-links">
+        <a class="ask-link" href="https://t.me/mcsombie" target="_blank" rel="noopener"><span class="ask-k" data-i18n="ct.tg">Телеграм</span><span class="ask-v">@mcsombie</span></a>
+        <a class="ask-link" href="mailto:muhtarulymaqsat@gmail.com"><span class="ask-k" data-i18n="ct.mail">Почта</span><span class="ask-v">muhtarulymaqsat@gmail.com</span></a>
+      </div>
+    </div>
     <div class="contact"><span data-i18n="fn.city">Алматы, Казахстан</span><span>+7 (708) 759-59-85</span></div>
   </div>
 </section>
@@ -1215,6 +1269,7 @@ img.scr.shot[data-s="3"]{background:var(--dark)}
 <footer class="dark">
   <div class="wrap foot">
     <span class="logo"><svg style="color:var(--on-dark)"><use href="#mark"/></svg>AIFA</span>
+    <a class="foot-inst" href="install.html" data-i18n="ft.inst">AIFA на экране телефона</a>
     <span data-i18n="ft">Учёт личных финансов · 2026</span>
   </div>
 </footer>
@@ -1319,9 +1374,9 @@ kk: {
   'pr.web':'Веб-нұсқаны ашу','pr.t2':'Жазылым','pr.month':'айына',
   'pr.p1':'Сынақ мерзіміндегінің бәрі','pr.p2':'Телефоннан сатып алуды автожазу','pr.p3':'Шектеусіз чектер мен үзінділер','pr.p4':'Кез келген кезеңге аналитика','pr.p5':'Жаңа мүмкіндіктер шыққан сайын',
   'pr.trial':'Алғашқы 14 күн тегін','pr.fine':'Жазылымды кез келген уақытта тоқтатуға болады.',
-  'fn.h':'Өзіңіз байқап көріңіз','fn.p':'Аккаунтты бір минутта ашыңыз: алғашқы 14 күн бәрі тегін. Алдымен көргіңіз келсе, демоны ашыңыз.','fn.again':'Талдауды қайта байқап көру','fn.city':'Алматы, Қазақстан',
-  'ft':'Жеке қаржы есебі · 2026','ui.top':'Жоғарыға',
-  'cta.wl':'Ерте қолжетімділік алу','cta.note':'14 күн бәрі тегін, картасыз. Демо бірден ашылады және екі сағат жұмыс істейді.','wl.eb':'Жабық қолжетімділік','wl.badge':'Келесі топқа жазылу жүріп жатыр','wl.h':'AIFA-ға ерте қолжетімділік алыңыз','wl.p':'Біз адамдарды шағын топтармен қосамыз, әркімге жауап беріп, тапқаныңызды тез түзету үшін. Өтінім қалдырыңыз, сізді жақын топтардың біріне шақырамыз.','wl.name':'Аты','wl.contact':'Пошта не телефон','wl.ph':'you@mail.kz не +7 701 …','wl.fine':'Байланыс тек шақыру үшін керек.',
+  'fn.h':'Өзіңіз байқап көріңіз','fn.p':'Аккаунтты бір минутта ашыңыз: алғашқы 14 күн бәрі тегін. Алдымен көргіңіз келсе, демоны ашыңыз.','fn.again':'Талдауды қайта байқап көру','fn.city':'Алматы, Қазақстан','ct.eb':'Сұрақтар мен ұсыныстар','ct.p':'Бірдеңе түсініксіз болса, жұмыс істемесе не идея болса, бізге жазыңыз. Өзіміз жауап береміз.','ct.tg':'Телеграм','ct.mail':'Пошта',
+  'ft':'Жеке қаржы есебі · 2026','cta.inst':'AIFA-ны телефон не компьютерге белгіше ретінде қалай қою керек','ft.inst':'AIFA телефон экранында','ui.top':'Жоғарыға',
+  'cta.wl':'Ерте қолжетімділік алу','cta.note':'Демо бірден ашылады және екі сағат жұмыс істейді.','wl.eb':'Жабық қолжетімділік','wl.badge':'Келесі топқа жазылу жүріп жатыр','wl.h':'AIFA-ға ерте қолжетімділік алыңыз','wl.p':'Біз адамдарды шағын топтармен қосамыз, әркімге жауап беріп, тапқаныңызды тез түзету үшін. Өтінім қалдырыңыз, сізді жақын топтардың біріне шақырамыз.','wl.name':'Аты','wl.contact':'Пошта','wl.ph':'you@mail.kz','wl.msgr':'WhatsApp не Telegram','wl.opt':'міндетті емес','wl.fine':'Байланыс тек шақыру үшін керек.',
   'nav.new':'Автожазба','au.eb':'Жаңа','au.h':'Картамен сатып алу өзі жазылады','au.p':'Телефонмен не картамен төледіңіз, бірнеше секундтан кейін сатып алу AIFA-да дүкенімен және санатымен тұр. Android-та AIFA Google Wallet, Samsung Wallet және қазақстандық банктердің хабарламаларын оқиды. iPhone-да мұны «Командалар» қосымшасындағы автоматтандыру жасайды.','au.l1':'Банктен де, әмияннан да хабарлама келсе де, бір сатып алу бір рет жазылады','au.l2':'Сол сатып алудың чегі не үзіндісі жаңа жазба ашпайды, барын толықтырады','au.l3':'Санат осы дүкендегі бұрынғы сатып алуларыңыздан алынады','au.l4':'Хабарлама мәтіні сақталмайды, тек сома, дүкен және уақыт','au.now':'қазір','au.n1':'Сатып алу 4 520 ₸ · ЖАЙЛАУ МАРКЕТ','au.n2':'Жайлау Маркет · 4 520 ₸','au.dup':'сол сатып алу, қайталанбайды','au.cat':'Азық-түлік','au.src':'Жайлау Маркет · автожазба','au.rc':'Кешке чек келді: жазбаға 6 тауар қосылды','au.ios':'iPhone: «Командалар» → Apple Pay','in.multi':'Бір сөйлемде бірнеше шығыс','in.multip':'«кофе 1500 және такси 2300» екі жазба болады.','in.c1':'Кофе','in.c2':'Такси','in.merch':'Дүкендердің өз атаулары','in.merchp':'Чектегі дүкен атауын бір рет түзетіңіз, келесі чектерде AIFA оны солай жазады.','in.rate':'Жауаптарды бағалау','in.ratep':'Ассистенттің жауабын 👍 не 👎 деп белгілеңіз. Осылай AIFA қай жерде қателесетінін көріп, түзетеміз.','in.rate1':'пайдалы','in.rate2':'дұрыс емес','in.cred':'Несиелер мен бөліп төлеу','in.credp':'Әр бөліп төлеу бойынша қанша төлеу қалды, айлық төлем және қаншасы төленді.','in.cred1':'Бөліп төлеу · смартфон','in.cred2':'33% төленді · айына 30 000 ₸','pr.day':'күніне шамамен 50 ₸','pr.ro':'Жазылымды ұзартпасаңыз, деректер жоғалмайды: оларды қарап, Excel-ге жүктеуге болады. Жазылым белсенді болмайынша жаңа жазба қосу мүмкін емес.','wl.k1':'Әр топта орын аз, өтінімдерді кезекпен қараймыз','wl.k2':'Шақырудан кейін 14 күн бәрі тегін','wl.k3':'Бізге қосымшаның ішінен жазасыз, біз жауап береміз',
   'cta.signup':'Аккаунт ашу','cta.demo':'Тіркелусіз демо'
 },
@@ -1330,11 +1385,11 @@ en: {
   'nav.core':'How it works','nav.app':'The app','nav.voice':'Voice','nav.brain':'Understanding','nav.fc':'Forecast','nav.price':'Pricing','nav.cta':'Try AIFA',
   'hero.eb':'Personal finance · Kazakhstan',
   'hero.h1':'Type <q>“coffee&nbsp;1500”</q> and the expense is recorded.',
-  'hero.sub':'Cash, Kaspi, Halyk, debts and installments in one place. Try it right here: type a spend in the box below.',
+  'hero.sub':'Cash, cards, debts and installments in one place. Try it right here: type a spend in the box below.',
   'hero.label':'A phrase about a spend or income','hero.ph':'type a spend in your own words','hero.send':'Parse',
   'hero.cta1':'Try AIFA','hero.cta2':'See how it works',
   'ut.eb':'Sound familiar?','ut.ha':'Your money is in different places',
-  'ut.pa':'Some on Kaspi, some on Halyk, some in cash. Plus a loan to your brother and headphones on installments. The total usually lives in your head.',
+  'ut.pa':'Some on one card, some on another, some in cash. Plus a loan to your brother and headphones on installments. The total usually lives in your head.',
   'ut.eb2':'In AIFA','ut.hb':'It all adds up to one number',
   'ut.pb':'You see how much you have in total and where it goes.',
   'ut.aria':'Five tangled threads straighten into one line','ut.scroll':'Scroll',
@@ -1411,10 +1466,10 @@ en: {
   'pr.web':'Open the web version','pr.t2':'Subscription','pr.month':'per month',
   'pr.p1':'Everything from the trial','pr.p2':'Auto-recording of purchases from your phone','pr.p3':'Unlimited receipts and statements','pr.p4':'Analytics for any period','pr.p5':'New features as they come out',
   'pr.trial':'First 14 days free','pr.fine':'You can cancel the subscription at any time.',
-  'fn.h':'Try it yourself','fn.p':'Create an account in a minute: the first 14 days are free. Want a look first? Open the demo.','fn.again':'Try the parser again','fn.city':'Almaty, Kazakhstan',
-  'ft':'Personal finance tracker · 2026','ui.top':'Back to top',
-  'cta.wl':'Get early access','cta.note':'14 days of everything free, no card. The demo opens right away and lasts two hours.','wl.eb':'Invite only','wl.badge':'Now signing up the next group','wl.h':'Get early access to AIFA','wl.p':'We let people in small groups so we can answer everyone and quickly fix what you find. Leave a request and we will invite you to one of the next groups.','wl.name':'Name','wl.contact':'Email or phone','wl.ph':'you@mail.com or +7 701 …','wl.fine':'We only use your contact for the invite.',
-  'nav.new':'Auto-recording','au.eb':'New','au.h':'Card purchases record themselves','au.p':'Pay with your phone or card, and a few seconds later the purchase is in AIFA with the store and category. On Android, AIFA reads notifications from Google Wallet, Samsung Wallet and Kazakhstani banks. On iPhone, an automation in the Shortcuts app does the same.','au.l1':'One purchase is recorded once, even when both the bank and the wallet send a notification','au.l2':'A receipt or statement for the same purchase fills in the entry instead of adding a new one','au.l3':'The category comes from your earlier purchases at that store','au.l4':'Notification text is not stored, only the amount, store and time','au.now':'now','au.n1':'Purchase 4,520 ₸ · ZHAILAU MARKET','au.n2':'Zhailau Market · 4,520 ₸','au.dup':'same purchase, not duplicated','au.cat':'Groceries','au.src':'Zhailau Market · auto-recorded','au.rc':'The receipt arrived in the evening: 6 items were added to the entry','au.ios':'iPhone: Shortcuts → Apple Pay','in.multi':'Several spends in one phrase','in.multip':'“coffee 1500 and taxi 2300” becomes two entries.','in.c1':'Coffee','in.c2':'Taxi','in.merch':'Your own store names','in.merchp':'Fix a store name on a receipt once, and AIFA uses your name on the next receipts too.','in.rate':'Rate the answers','in.ratep':'Mark an assistant answer 👍 or 👎. That shows us where AIFA gets it wrong, and we fix it.','in.rate1':'helpful','in.rate2':'not right','in.cred':'Loans and installments','in.credp':'What is left to pay, the monthly payment and how much is paid off, for each installment.','in.cred1':'Installment · smartphone','in.cred2':'33% paid · 30,000 ₸ a month','pr.day':'about 50 ₸ a day','pr.ro':'If you don’t renew, your data stays: you can view it and export it to Excel. You just can’t add new entries until the subscription is active again.','wl.k1':'Each group is small, and requests are handled in order','wl.k2':'After the invite, 14 days of everything for free','wl.k3':'You write to us right from the app, and we answer',
+  'fn.h':'Try it yourself','fn.p':'Create an account in a minute: the first 14 days are free. Want a look first? Open the demo.','fn.again':'Try the parser again','fn.city':'Almaty, Kazakhstan','ct.eb':'Questions and suggestions','ct.p':'Write to us if something is unclear, doesn’t work, or you have an idea. We answer personally.','ct.tg':'Telegram','ct.mail':'Email',
+  'ft':'Personal finance tracker · 2026','cta.inst':'How to put AIFA on your phone or computer as an icon','ft.inst':'AIFA on your home screen','ui.top':'Back to top',
+  'cta.wl':'Get early access','cta.note':'The demo opens right away and lasts two hours.','wl.eb':'Invite only','wl.badge':'Now signing up the next group','wl.h':'Get early access to AIFA','wl.p':'We let people in small groups so we can answer everyone and quickly fix what you find. Leave a request and we will invite you to one of the next groups.','wl.name':'Name','wl.contact':'Email','wl.ph':'you@mail.com','wl.msgr':'WhatsApp or Telegram','wl.opt':'optional','wl.fine':'We only use your contact for the invite.',
+  'nav.new':'Auto-recording','au.eb':'New','au.h':'Card purchases record themselves','au.p':'Pay with your phone or card, and a few seconds later the purchase is in AIFA with the store and category. On Android, AIFA reads notifications from Google Wallet, Samsung Wallet and banks in Kazakhstan (more countries are coming). On iPhone, an automation in the Shortcuts app does the same.','au.l1':'One purchase is recorded once, even when both the bank and the wallet send a notification','au.l2':'A receipt or statement for the same purchase fills in the entry instead of adding a new one','au.l3':'The category comes from your earlier purchases at that store','au.l4':'Notification text is not stored, only the amount, store and time','au.now':'now','au.n1':'Purchase 4,520 ₸ · ZHAILAU MARKET','au.n2':'Zhailau Market · 4,520 ₸','au.dup':'same purchase, not duplicated','au.cat':'Groceries','au.src':'Zhailau Market · auto-recorded','au.rc':'The receipt arrived in the evening: 6 items were added to the entry','au.ios':'iPhone: Shortcuts → Apple Pay','in.multi':'Several spends in one phrase','in.multip':'“coffee 1500 and taxi 2300” becomes two entries.','in.c1':'Coffee','in.c2':'Taxi','in.merch':'Your own store names','in.merchp':'Fix a store name on a receipt once, and AIFA uses your name on the next receipts too.','in.rate':'Rate the answers','in.ratep':'Mark an assistant answer 👍 or 👎. That shows us where AIFA gets it wrong, and we fix it.','in.rate1':'helpful','in.rate2':'not right','in.cred':'Loans and installments','in.credp':'What is left to pay, the monthly payment and how much is paid off, for each installment.','in.cred1':'Installment · smartphone','in.cred2':'33% paid · 30,000 ₸ a month','pr.day':'about 50 ₸ a day','pr.ro':'If you don’t renew, your data stays: you can view it and export it to Excel. You just can’t add new entries until the subscription is active again.','wl.k1':'Each group is small, and requests are handled in order','wl.k2':'After the invite, 14 days of everything for free','wl.k3':'You write to us right from the app, and we answer',
   'cta.signup':'Create an account','cta.demo':'Demo, no sign-up'
 }};
 
@@ -1435,7 +1490,7 @@ ru: {
   'fc.tipBad':'Если тратить на кафе не больше {x} в день, до зарплаты хватит.','fc.tipBad0':'Даже без кафе не хватает {x}. Давайте посмотрим на такси и продукты.','fc.tipOk':'Запас {x}. Его можно отложить на цель «Отпуск».',
   'fc.today':'сегодня','fc.rent':'аренда','fc.pay':'зарплата','fc.low':'минимум','fc.week':'{x} / нед',
   'm6':'июня','m7':'июля','m6s':'июн','m7s':'июл',
-  'wl.need':'Укажите имя и почту или телефон','wl.sending':'Отправляем…','wl.ok':'Заявка принята. Напишем, когда откроем доступ для следующей группы.','wl.fail':'Не получилось отправить. Попробуйте ещё раз чуть позже.'
+  'wl.need':'Укажите имя и почту','wl.phWa':'+7 701 123 45 67','wl.phTg':'@username или +7 701 …','wl.sending':'Отправляем…','wl.ok':'Заявка принята. Напишем, когда откроем доступ для следующей группы.','wl.fail':'Не получилось отправить. Попробуйте ещё раз чуть позже.','wl.maint':'Идут технические работы. Попробуйте через пару минут, мы скоро вернёмся.'
 },
 kk: {
   'c.coffee':'Кофе','c.food':'Тамақ','c.delivery':'Жеткізу','c.groceries':'Азық-түлік','c.taxi':'Такси','c.transport':'Көлік','c.fuel':'Жанармай','c.shopping':'Сатып алу','c.utilities':'Коммуналдық','c.connection':'Байланыс','c.rent':'Жалдау ақысы','c.health':'Дәріхана','c.fun':'Ойын-сауық','c.loan':'Несие','c.savings':'Жинақ','c.salary':'Жалақы','c.gift':'Сыйлық','c.cashback':'Кешбэк','c.other':'Басқа','c.side':'Қосымша табыс','c.dinner':'Кешкі ас','c.netflix':'Netflix',
@@ -1452,7 +1507,7 @@ kk: {
   'fc.tipBad':'Кафеге күніне {x}-ден аспай жұмсасаңыз, жалақыға дейін жетеді.','fc.tipBad0':'Кафесіз де {x} жетпейді. Такси мен азық-түлікті қарастырайық.','fc.tipOk':'{x} артық қалады. Оны «Демалыс» мақсатына салуға болады.',
   'fc.today':'бүгін','fc.rent':'жалдау','fc.pay':'жалақы','fc.low':'ең төмені','fc.week':'{x} / апта',
   'm6':'маусым','m7':'шілде','m6s':'мау','m7s':'шіл','m6in':'маусымда','m7in':'шілдеде',
-  'wl.need':'Атыңызды және пошта не телефонды жазыңыз','wl.sending':'Жіберілуде…','wl.ok':'Өтінім қабылданды. Келесі топқа қолжетімділік ашылғанда хабарлаймыз.','wl.fail':'Жіберу сәтсіз болды. Сәлден кейін қайталап көріңіз.'
+  'wl.need':'Атыңыз бен поштаңызды жазыңыз','wl.phWa':'+7 701 123 45 67','wl.phTg':'@username не +7 701 …','wl.sending':'Жіберілуде…','wl.ok':'Өтінім қабылданды. Келесі топқа қолжетімділік ашылғанда хабарлаймыз.','wl.fail':'Жіберу сәтсіз болды. Сәлден кейін қайталап көріңіз.','wl.maint':'Техникалық жұмыстар жүріп жатыр. Бірнеше минуттан кейін қайталап көріңіз, жақында ораламыз.'
 },
 en: {
   'c.coffee':'Coffee','c.food':'Food','c.delivery':'Delivery','c.groceries':'Groceries','c.taxi':'Taxi','c.transport':'Transport','c.fuel':'Fuel','c.shopping':'Shopping','c.utilities':'Utilities','c.connection':'Mobile','c.rent':'Rent','c.health':'Pharmacy','c.fun':'Entertainment','c.loan':'Loan','c.savings':'Savings','c.salary':'Salary','c.gift':'Gift','c.cashback':'Cashback','c.other':'Other','c.side':'Side gig','c.dinner':'Dinner','c.netflix':'Netflix',
@@ -1469,7 +1524,7 @@ en: {
   'fc.tipBad':'Keep cafés under {x} a day and you’ll make it to payday.','fc.tipBad0':'Even with no cafés you’re {x} short. Let’s look at taxis and groceries.','fc.tipOk':'{x} to spare. You could move it to the Vacation goal.',
   'fc.today':'today','fc.rent':'rent','fc.pay':'payday','fc.low':'low point','fc.week':'{x} / wk',
   'm6':'June','m7':'July','m6s':'Jun','m7s':'Jul',
-  'wl.need':'Enter your name and an email or phone','wl.sending':'Sending…','wl.ok':'Request received. We will write when we open access for the next group.','wl.fail':'Could not send. Please try again in a moment.'
+  'wl.need':'Enter your name and email','wl.phWa':'+7 701 123 45 67','wl.phTg':'@username or +7 701 …','wl.sending':'Sending…','wl.ok':'Request received. We will write when we open access for the next group.','wl.fail':'Could not send. Please try again in a moment.','wl.maint':'Maintenance in progress. Please try again in a couple of minutes, we will be back soon.'
 }};
 
 /* Hero examples per language. The parser understands all of them in any mode. */
@@ -2158,26 +2213,115 @@ var APP_URL = 'https://manmanpoove.github.io/AIFA-app/lite/';
 // Same origin when the page is served by our own host; the API answers the
 // GitHub Pages origin too, so a copy hosted there still reaches it.
 var API = /(^|\.)tail7106db\.ts\.net$/.test(location.hostname) ? '/api/v1' : 'https://aifa.tail7106db.ts.net/api/v1';
+/* Channel label. Each promotion channel gets its own link to this page
+   (…/?src=insta-bio, …/?src=chat-univer). The label is kept in this browser
+   for 30 days, so a visitor who comes back later by the plain address still
+   counts for the channel that brought them; a newer labelled link replaces
+   it. It goes with the waitlist form, with the visit and button beacons, and
+   on to the app (`&src=`), which hands it back on demo start and sign-up.
+   The visitor id is random and lives only here: it lets the panel count
+   people instead of page loads, and names nobody. */
+var SRC = (function(){
+  var clean = function(v){ return String(v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '').slice(0, 40).replace(/^[-_]+|[-_]+$/g, ''); };
+  var fromUrl = clean(new URLSearchParams(location.search).get('src'));
+  try {
+    if (fromUrl) { localStorage.setItem('aifa_src', JSON.stringify({v: fromUrl, t: Date.now()})); return fromUrl; }
+    var kept = JSON.parse(localStorage.getItem('aifa_src') || 'null');
+    if (kept && kept.v && Date.now() - kept.t < 30 * 864e5) return clean(kept.v) || 'landing';
+  } catch (e) {}
+  return fromUrl || 'landing';
+})();
+var VISITOR = (function(){
+  var id = '';
+  try { id = localStorage.getItem('aifa_vid') || ''; } catch (e) {}
+  if (!/^[0-9a-z]{16,40}$/.test(id)) {
+    id = Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+    id = id.slice(0, 32);
+    try { localStorage.setItem('aifa_vid', id); } catch (e) {}
+  }
+  return id;
+})();
+/* The short-path test's variant of this page: A while the test runs and this
+   browser was drawn into it (see the script in <head>), otherwise none. It
+   goes with every beacon and on to the app (`&ab=`, `&vid=`), which hands it
+   back on registration. The server's answer whether the test still runs is
+   kept for the next visit. */
+var AB = (function(){
+  try {
+    if (localStorage.getItem('aifa_ab_on') === '0' || new URLSearchParams(location.search).get('start')) return '';
+    return localStorage.getItem('aifa_ab') === 'A' ? 'A' : '';
+  } catch (e) { return ''; }
+})();
+var INTERNAL = (function(){ try { return localStorage.getItem('aifa_internal') === '1'; } catch (e) { return false; } })();
+try {
+  fetch(API + '/sources/ab').then(function(r){ return r.json(); }).then(function(j){
+    if (j && j.data) localStorage.setItem('aifa_ab_on', j.data.short_path ? '1' : '0');
+  }).catch(function(){});
+} catch (e) {}
+function hit(kind, extra){
+  var body = {src: SRC, visitor: VISITOR, kind: kind, variant: AB, internal: INTERNAL};
+  for (var k in extra || {}) body[k] = extra[k];
+  try {
+    fetch(API + '/sources/hit', {method: 'POST', keepalive: true, headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)}).catch(function(){});
+  } catch (e) {}
+}
+// Where an unlabelled visitor came from: the referring site's host only.
+var REF = '';
+try { var rh = document.referrer ? new URL(document.referrer).hostname : ''; if (rh && rh !== location.hostname) REF = rh.toLowerCase().slice(0, 80); } catch (e) {}
+hit('visit', {referrer: REF});
+// How far down the page and how long, sent when the page is hidden (closed,
+// switched away): why most visitors leave without pressing anything.
+(function(){
+  var shownAt = Date.now(), maxScroll = 0;
+  function scrolled(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    maxScroll = Math.max(maxScroll, h <= 0 ? 100 : Math.min(100, Math.round(scrollY / h * 100)));
+  }
+  addEventListener('scroll', scrolled, {passive: true});
+  scrolled();
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'hidden') hit('leave', {scroll: maxScroll, seconds: Math.min(86400, Math.round((Date.now() - shownAt) / 1000))});
+    else shownAt = Date.now();
+  });
+})();
 function refreshAppLinks(){
   $$('a[data-app]').forEach(function(a){
-    a.href = APP_URL + (a.dataset.app === 'demo' ? '?demo=1&lang=' : a.dataset.app === 'signup' ? '?signup=1&lang=' : '?lang=') + LANG;
+    a.href = APP_URL + (a.dataset.app === 'demo' ? '?demo=1&lang=' : a.dataset.app === 'signup' ? '?signup=1&lang=' : '?lang=') + LANG +
+      '&src=' + encodeURIComponent(SRC) + '&vid=' + VISITOR + (AB ? '&ab=' + AB : '');
   });
 }
+$$('a[data-app]').forEach(function(a){
+  a.addEventListener('click', function(){ hit(a.dataset.app === 'demo' ? 'click_demo' : 'click_signup'); });
+});
 langHooks.push(refreshAppLinks);
 refreshAppLinks();
 
 var wl = $('#wlform'), wlMsg = $('#wlmsg'), wlBtn = $('#wlbtn');
+function wlKind(){ var r = wl.querySelector('input[name=messenger]:checked'); return r ? r.value : 'whatsapp'; }
+// WhatsApp wants a phone, Telegram a @username or a phone: the keyboard and
+// the hint follow the choice.
+function wlMsgr(){
+  var tg = wlKind() === 'telegram';
+  wl.mcontact.setAttribute('placeholder', T(tg ? 'wl.phTg' : 'wl.phWa'));
+  wl.mcontact.setAttribute('inputmode', tg ? 'text' : 'tel');
+  wl.mcontact.setAttribute('autocomplete', tg ? 'off' : 'tel');
+}
+$$('#wlform input[name=messenger]').forEach(function(r){ r.addEventListener('change', function(){ wlMsgr(); wl.mcontact.focus(); }); });
+wlMsgr();
+langHooks.push(wlMsgr);
 langHooks.push(function(){ if (!wl.classList.contains('done')) { wlMsg.textContent = ''; wlMsg.className = 'wl-msg'; } });
 wl.addEventListener('submit', function(e){
   e.preventDefault();
-  var body = {name: wl.name.value.trim(), contact: wl.contact.value.trim(), lang: LANG, source: 'landing', website: wl.website.value};
+  var body = {name: wl.name.value.trim(), contact: wl.contact.value.trim(), messenger: wlKind(), messenger_contact: wl.mcontact.value.trim(), lang: LANG, source: SRC, website: wl.website.value};
   if (!body.name || !body.contact) { wlMsg.className = 'wl-msg bad'; wlMsg.textContent = T('wl.need'); return; }
   wlBtn.disabled = true; wlMsg.className = 'wl-msg'; wlMsg.textContent = T('wl.sending');
   fetch(API + '/waitlist', {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept-Language': LANG}, body: JSON.stringify(body)})
     .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return {ok: r.ok, j: j, s: r.status}; }); })
     .then(function(res){
       if (res.ok) { wl.classList.add('done'); wlMsg.className = 'wl-msg ok'; wlMsg.textContent = T('wl.ok'); }
-      else { wlMsg.className = 'wl-msg bad'; wlMsg.textContent = (res.j && res.j.error) || T('wl.fail'); }
+      // The proxy's «backend away» reply (deploy/Caddyfile, maintenance).
+      else { wlMsg.className = 'wl-msg bad'; wlMsg.textContent = (res.j && res.j.error) || T(res.j && res.j.maintenance ? 'wl.maint' : 'wl.fail'); }
     })
     .catch(function(){ wlMsg.className = 'wl-msg bad'; wlMsg.textContent = T('wl.fail'); })
     .then(function(){ wlBtn.disabled = false; });
@@ -2419,9 +2563,32 @@ function setLang(l, initial){
 $$('button', sw).forEach(function(b){ b.addEventListener('click', function(){ stopAuto(); setLang(b.dataset.l); }); });
 var startLang = 'ru';
 try { startLang = localStorage.getItem('aifa-lang') || startLang; } catch (e) {}
-if (/^kk/i.test(navigator.language || '') && !(function(){ try { return localStorage.getItem('aifa-lang'); } catch (e) { return null; } })()) startLang = 'kk';
+// First visit: the browser's language — Kazakh, Russian for CIS languages,
+// English for everyone else.
+if (!(function(){ try { return localStorage.getItem('aifa-lang'); } catch (e) { return null; } })()) {
+  var nl = navigator.language || '';
+  startLang = /^kk/i.test(nl) ? 'kk' : (!nl || /^(ru|uk|be|ky|uz|tg|hy|az|ka|tk)/i.test(nl)) ? 'ru' : 'en';
+}
 var h = (location.hash || '').slice(1); if (h === 'kk' || h === 'en' || h === 'ru') startLang = h;
 setLang(startLang, true);
+// The price where the visitor is: tenge in Kazakhstan (and for Russian/Kazakh
+// visitors with no region), the app's local price in the euro area, the UK
+// and Russia, dollars elsewhere. The same table as the server's premium.Price.
+(function(){
+  var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var nl = navigator.language || '', region = (nl.split(/[-_]/)[1] || '').toUpperCase();
+  var euro = 'AT BE HR CY EE FI FR DE GR IE IT LV LT LU MT NL PT SK SI ES';
+  var p;
+  if (region === 'KZ' || /^Asia\/(Almaty|Qostanay|Aqtobe|Aqtau|Atyrau|Oral|Qyzylorda)$/.test(tz) || (!region && /^(ru|kk)/i.test(nl))) return;
+  if (region === 'GB' || tz === 'Europe/London') p = ['£0', '£2.49'];
+  else if (region === 'RU' || tz === 'Europe/Moscow') p = ['0 ₽', '299 ₽'];
+  else if ((region && euro.indexOf(region) > -1) || (!region && /^Europe\//.test(tz))) p = ['0 €', '2,99 €'];
+  else p = ['$0', '$2.99'];
+  var f = document.getElementById('price-free'), m = document.getElementById('price-month'), d = document.getElementById('price-day');
+  if (f) f.textContent = p[0];
+  if (m) m.textContent = p[1];
+  if (d) d.style.display = 'none';
+})();
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeInd);
 addEventListener('resize', placeInd);
 if (auto) autoT = setTimeout(typeNext, 3200);

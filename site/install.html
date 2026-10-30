@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIFA — Как установить на телефон и компьютер</title>
+<meta name="description" content="AIFA как приложение: иконка на экране iPhone, Android или компьютера за минуту, без магазина приложений.">
+<meta name="theme-color" content="#FBFAF7">
+<link rel="canonical" href="https://aifa.tail7106db.ts.net/install.html">
+<meta property="og:title" content="AIFA как приложение — за минуту">
+<meta property="og:description" content="Иконка AIFA на экране iPhone, Android или компьютера, без магазина приложений.">
+<meta property="og:image" content="https://aifa.tail7106db.ts.net/og.png">
+<!-- «Сайт как приложение»: how to put the web version (GitHub Pages, lite)
+     on the home screen of an iPhone or Android phone, or install it on a
+     computer. For people who found it tiresome to open the site every time.
+     One page, three languages (?lang=kk|en, else the landing's saved choice
+     or the browser language), the device picked from the user agent and
+     switchable. Text lives in T below; the drawings are inline SVG built by
+     the functions under «Illustrations», with menu labels in the page's
+     language. The app links here from «Ещё → Установить как приложение»
+     when the browser has no install dialog of its own (Safari, Firefox). -->
+<style>
+@font-face{font-family:"Onest";font-weight:400;font-display:swap;src:url(fonts/Onest-Regular.ttf) format("truetype")}
+@font-face{font-family:"Onest";font-weight:600;font-display:swap;src:url(fonts/Onest-SemiBold.ttf) format("truetype")}
+:root{--ink:#1C1917;--paper:#FBFAF7;--card:#FFFFFF;--hair:#E6E1D8;--soft:#6F6A62;--accent:#9C7B58;--ivory:#F1EAE2;--tap:#C9854F}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1040px;margin:0 auto;padding:24px 16px 72px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:36px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:18px}
+.logo img{width:28px;height:28px;border-radius:8px}
+.langs{display:flex;gap:6px}
+.langs button{border:1px solid var(--hair);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:14px}
+.langs button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:600}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.12;margin:0 0 14px;font-weight:600;letter-spacing:-.01em;max-width:760px}
+.lead{font-size:18px;color:var(--soft);max-width:640px;margin:0 0 26px}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 36px;padding:0;list-style:none;max-width:760px}
+.why li{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:12px 14px;font-size:14px;line-height:1.4}
+.why b{display:block;font-size:15px;margin-bottom:2px}
+.tabs{display:inline-flex;background:#F0ECE5;border-radius:999px;padding:4px;gap:2px;margin:0 0 10px;flex-wrap:wrap}
+.tabs button{border:0;background:transparent;color:var(--ink);font:inherit;font-size:15px;font-weight:600;padding:8px 18px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--paper)}
+.detected{font-size:14px;color:var(--soft);margin:0 0 22px;min-height:1.4em}
+.warn{display:none;background:#FFF6EA;border:1px solid #EBD3B4;border-radius:16px;padding:14px 16px;margin:0 0 22px;font-size:15px;line-height:1.5}
+.warn.on{display:block}
+.warn b{display:block;margin-bottom:4px}
+.warn button{margin-top:10px}
+.open{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;background:var(--ink);color:var(--paper);border-radius:22px;padding:18px 20px;margin:0 0 28px}
+.open p{margin:0;flex:1 1 260px;font-size:15px;line-height:1.45}
+.open p b{display:block;font-size:17px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-weight:600;font-size:15px;padding:11px 20px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn.ghost{background:transparent;color:inherit;border:1px solid currentColor;opacity:.85}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.step{background:var(--card);border:1px solid var(--hair);border-radius:22px;padding:14px 14px 18px;display:flex;flex-direction:column}
+.art{background:var(--ivory);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:14px 8px;margin-bottom:14px;aspect-ratio:1/1.08}
+.art svg{width:100%;height:100%;max-width:230px;display:block}
+.art.wide{aspect-ratio:auto;min-height:220px}
+.art.wide svg{max-width:100%;height:auto}
+.num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:14px;font-weight:600;margin-right:8px;flex:none}
+.step h3{display:flex;align-items:flex-start;font-size:17px;line-height:1.3;margin:0 0 6px;font-weight:600}
+.step h3 span{padding-top:2px}
+.step p{margin:0;color:var(--soft);font-size:15px;line-height:1.5}
+.step p + p{margin-top:6px}
+.alt{margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.alt div{border:1px dashed #D6CEC2;border-radius:18px;padding:14px 16px;font-size:15px;line-height:1.5}
+.alt b{display:block;margin-bottom:4px}
+h2{font-size:24px;line-height:1.2;margin:56px 0 16px;font-weight:600}
+.faq{display:grid;gap:10px;max-width:760px}
+details{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:14px 16px}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-weight:400;font-size:20px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin:10px 0 0;color:var(--soft)}
+footer{margin-top:56px;font-size:14px;color:var(--soft);display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:var(--soft)}
+kbd{font:inherit;font-weight:600;color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+/* The tap marker on the drawings. */
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{0%{opacity:.55;transform:scale(.6)}70%{opacity:0;transform:scale(1.6)}100%{opacity:0;transform:scale(1.6)}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none;opacity:.25}}
+@media (max-width:640px){
+  header{margin-bottom:24px}
+  .why{grid-template-columns:1fr}
+  .tabs{display:flex}
+  .tabs button{flex:1;padding:8px 10px}
+  .steps{grid-template-columns:1fr}
+  .art{aspect-ratio:auto;height:280px}
+  .art.wide{height:auto}
+  .open .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <a class="logo" href="./"><svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="23" fill="#F1EAE2"/><path d="M50 20 A30 30 0 1 1 22 42" fill="none" stroke="#1C1917" stroke-width="8" stroke-linecap="round"/><circle cx="27" cy="36" r="11" fill="#D98E63"/></svg>AIFA</a>
+  <nav class="langs" aria-label="Язык / Тіл / Language">
+    <button type="button" data-set="ru">RU</button>
+    <button type="button" data-set="kk">KZ</button>
+    <button type="button" data-set="en">EN</button>
+  </nav>
+</header>
+
+<p class="eyebrow" data-t="eb">AIFA как приложение</p>
+<h1 data-t="h1">Иконка AIFA на экране за минуту</h1>
+<p class="lead" data-t="lead">Не нужно каждый раз искать сайт: добавьте AIFA на экран телефона или компьютера, и он будет открываться как обычное приложение, во весь экран, без адресной строки. Из магазина ничего скачивать не нужно.</p>
+<ul class="why">
+  <li><b data-t="w1">Одно касание</b><span data-t="w1p">Открывается с главного экрана, как Kaspi или WhatsApp</span></li>
+  <li><b data-t="w2">Во весь экран</b><span data-t="w2p">Без вкладок и адресной строки браузера</span></li>
+  <li><b data-t="w3">Всегда свежая версия</b><span data-t="w3p">Обновления приходят сами, ничего переустанавливать не нужно</span></li>
+</ul>
+
+<div class="tabs" role="tablist" aria-label="Устройство">
+  <button type="button" role="tab" data-os="ios" id="tab-ios" aria-controls="steps">iPhone</button>
+  <button type="button" role="tab" data-os="android" id="tab-android" aria-controls="steps">Android</button>
+  <button type="button" role="tab" data-os="pc" id="tab-pc" aria-controls="steps" data-t="tpc">Компьютер</button>
+</div>
+<p class="detected" id="detected"></p>
+
+<div class="warn" id="inapp">
+  <b data-t="ia">Вы открыли страницу внутри Instagram, Telegram или другого приложения</b>
+  <span id="inappText"></span><br>
+  <button type="button" class="btn ghost" id="copy" data-t="copy">Скопировать ссылку</button>
+</div>
+
+<div class="open">
+  <p><b data-t="o1">Сначала откройте AIFA и войдите</b><span id="openText"></span></p>
+  <a class="btn" id="openApp" href="https://manmanpoove.github.io/AIFA-app/lite/" target="_blank" rel="noopener" data-t="ob">Открыть AIFA</a>
+</div>
+
+<ol class="steps" id="steps" role="tabpanel" aria-live="polite"></ol>
+<div class="alt" id="alt"></div>
+
+<h2 data-t="fq">Частые вопросы</h2>
+<div class="faq" id="faq"></div>
+
+<footer>
+  <a href="./" data-t="home">Главная</a>
+  <a href="privacy.html" id="privacy" data-t="priv">Политика конфиденциальности</a>
+  <a href="https://t.me/mcsombie" target="_blank" rel="noopener" data-t="help">Не получилось? Напишите нам в Telegram</a>
+</footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<noscript><style>.steps,.tabs,.detected{display:none}</style></noscript>
+
+<script>
+(function () {
+'use strict';
+
+var APP_URL = 'https://manmanpoove.github.io/AIFA-app/lite/';
+var APP_HOST = 'manmanpoove.github.io';
+
+/* ───────────────────────── Text ─────────────────────────
+   ui: labels drawn inside the pictures, written the way the phone itself
+   shows them in that language. kk keeps the Russian menu names next to the
+   Kazakh ones: most phones in Kazakhstan run in Russian. */
+var T = {
+ru: {
+  page: {
+    title: 'Как установить на телефон и компьютер',
+    eb: 'AIFA как приложение', h1: 'Иконка AIFA на экране за минуту',
+    lead: 'Не нужно каждый раз искать сайт: добавьте AIFA на экран телефона или компьютера, и он будет открываться как обычное приложение, во весь экран, без адресной строки. Из магазина ничего скачивать не нужно.',
+    w1: 'Одно касание', w1p: 'Открывается с главного экрана, как Kaspi или WhatsApp',
+    w2: 'Во весь экран', w2p: 'Без вкладок и адресной строки браузера',
+    w3: 'Всегда свежая версия', w3p: 'Обновления приходят сами, ничего переустанавливать не нужно',
+    tpc: 'Компьютер', o1: 'Сначала откройте AIFA и войдите', ob: 'Открыть AIFA',
+    ia: 'Вы открыли страницу внутри Instagram, Telegram или другого приложения',
+    copy: 'Скопировать ссылку', copied: 'Ссылка скопирована',
+    fq: 'Частые вопросы', home: 'Главная', priv: 'Политика конфиденциальности', help: 'Не получилось? Напишите нам в Telegram',
+    det: { ios: 'Похоже, у вас iPhone или iPad. Можно выбрать другое устройство выше.', android: 'Похоже, у вас Android. Можно выбрать другое устройство выше.', pc: 'Похоже, вы за компьютером. Инструкции для телефона на вкладках выше.' }
+  },
+  open: {
+    ios: 'Откройте ссылку в Safari (или в Chrome на iOS 16.4 и новее) и войдите в аккаунт. Дальше 4 шага.',
+    android: 'Откройте ссылку в Chrome и войдите в аккаунт. Дальше 3 шага.',
+    pc: 'Откройте ссылку в Chrome или Edge. Дальше 2 шага.'
+  },
+  inapp: {
+    ios: 'Встроенный браузер не умеет добавлять на экран. Нажмите «•••» или значок компаса и выберите «Открыть в Safari», либо скопируйте ссылку и вставьте её в Safari.',
+    other: 'Встроенный браузер не умеет устанавливать приложения. Нажмите ⋮ и выберите «Открыть в Chrome», либо скопируйте ссылку и вставьте её в Chrome.'
+  },
+  steps: {
+    ios: [
+      ['Нажмите «Поделиться»', 'Квадрат со стрелкой вверх на нижней панели Safari.', 'На iOS 26: сначала «•••» справа от адреса, затем «Поделиться».'],
+      ['Выберите «На экран «Домой»»', 'Пролистайте список вниз, если пункта не видно сразу.'],
+      ['Нажмите «Добавить»', 'Переключатель «Открывать как веб-приложение» оставьте включённым.'],
+      ['Готово, AIFA на экране', 'Открывайте с иконки. При первом запуске войдите ещё раз: iPhone хранит вход в приложении отдельно от Safari.']
+    ],
+    android: [
+      ['Нажмите ⋮ в Chrome', 'Три точки справа от адресной строки.'],
+      ['Выберите «Установить приложение»', 'В некоторых версиях пункт называется «Добавить на главный экран».'],
+      ['Нажмите «Установить»', 'Иконка AIFA появится на главном экране и в списке приложений.']
+    ],
+    pc: [
+      ['Нажмите значок установки', 'В Chrome и Edge он справа в адресной строке: экран со стрелкой. Если его нет: ⋮ → «Трансляция, сохранение и отправка» → «Установить страницу как приложение». В Edge: «…» → «Приложения» → «Установить этот сайт как приложение».'],
+      ['Нажмите «Установить»', 'AIFA откроется в своём окне. Ярлык появится на рабочем столе и в меню «Пуск», его можно закрепить на панели задач.']
+    ]
+  },
+  alt: {
+    ios: [['На iPad', 'То же самое: кнопка «Поделиться» в верхней панели Safari.'], ['Chrome на iPhone', 'На iOS 16.4 и новее: кнопка «Поделиться» справа в адресной строке → «На экран «Домой»».']],
+    android: [['Samsung Internet', 'Нажмите ≡ внизу → «Добавить страницу на» → «Главный экран».'], ['Проще всего', 'В самой AIFA откройте «Ещё → Установить как приложение»: Chrome сразу предложит установку.']],
+    pc: [['Mac и Safari', 'Меню «Файл» → «Добавить в Dock». AIFA появится в Dock и в Launchpad.'], ['Проще всего', 'В самой AIFA откройте «Ещё → Установить как приложение»: Chrome и Edge сразу предложат установку.']]
+  },
+  faq: [
+    ['Это настоящее приложение?', 'Это та же веб-версия AIFA, но с иконкой и в отдельном окне, без браузера. Ваши записи, кошельки и аналитика те же, что на сайте и в телефоне: всё хранится в аккаунте.'],
+    ['Нужно ли входить заново?', 'На iPhone да, один раз: приложение с экрана «Домой» не видит вход из Safari. На Android и компьютере обычно вход сохраняется.'],
+    ['Не вижу нужного пункта в меню', 'Проверьте, что страница открыта в Safari (iPhone) или Chrome (Android, компьютер), а не внутри Instagram, Telegram или WhatsApp. В Firefox на компьютере установка недоступна, откройте AIFA в Chrome или Edge.'],
+    ['Как обновить?', 'Никак: при каждом запуске открывается последняя версия.'],
+    ['Как удалить?', 'Как любое приложение: удержите иконку и выберите «Удалить». Аккаунт и данные при этом не удаляются.'],
+    ['Будут ли уведомления?', 'Пока нет: напоминания приходят только в приложении для Android из APK. Для веб-версии мы их готовим.']
+  ],
+  done: ['Готово', 'Открывайте AIFA с иконки, как любое приложение.', 'AIFA открывается в своём окне, а иконка ждёт на панели задач.'],
+  ui: {
+    share: 'Поделиться', copy: 'Скопировать', fav: 'Добавить в избранное', addHome: 'На экран «Домой»',
+    cancel: 'Отменить', add: 'Добавить', webApp: 'Открывать как веб-приложение',
+    newTab: 'Новая вкладка', history: 'История', downloads: 'Скачанные файлы', install: 'Установить приложение', settings: 'Настройки',
+    installQ: 'Установить приложение?', installBtn: 'Установить', cancel2: 'Отмена', login: 'Войти'
+  }
+},
+kk: {
+  page: {
+    title: 'Телефон мен компьютерге қалай орнату керек',
+    eb: 'AIFA қосымша ретінде', h1: 'Бір минутта AIFA белгішесі экранда',
+    lead: 'Сайтты әр жолы іздеудің қажеті жоқ: AIFA-ны телефон не компьютер экранына қосыңыз, ол кәдімгі қосымша сияқты толық экранда, мекенжай жолағынсыз ашылады. Дүкеннен ештеңе жүктеудің қажеті жоқ.',
+    w1: 'Бір рет басу', w1p: 'Kaspi не WhatsApp сияқты басты экраннан ашылады',
+    w2: 'Толық экранда', w2p: 'Браузердің қойындылары мен мекенжай жолағынсыз',
+    w3: 'Әрқашан жаңа нұсқа', w3p: 'Жаңартулар өздігінен келеді, қайта орнатудың қажеті жоқ',
+    tpc: 'Компьютер', o1: 'Алдымен AIFA-ны ашып, кіріңіз', ob: 'AIFA-ны ашу',
+    ia: 'Бет Instagram, Telegram не басқа қосымшаның ішінде ашылды',
+    copy: 'Сілтемені көшіру', copied: 'Сілтеме көшірілді',
+    fq: 'Жиі қойылатын сұрақтар', home: 'Басты бет', priv: 'Құпиялылық саясаты', help: 'Шықпады ма? Telegram-ға жазыңыз',
+    det: { ios: 'Сізде iPhone не iPad сияқты. Жоғарыда басқа құрылғыны таңдауға болады.', android: 'Сізде Android сияқты. Жоғарыда басқа құрылғыны таңдауға болады.', pc: 'Сіз компьютердесіз сияқты. Телефонға арналған нұсқаулық жоғарыдағы қойындыларда.' }
+  },
+  open: {
+    ios: 'Сілтемені Safari-де (не iOS 16.4 және жаңасындағы Chrome-да) ашып, аккаунтқа кіріңіз. Әрі қарай 4 қадам.',
+    android: 'Сілтемені Chrome-да ашып, аккаунтқа кіріңіз. Әрі қарай 3 қадам.',
+    pc: 'Сілтемені Chrome не Edge-де ашыңыз. Әрі қарай 2 қадам.'
+  },
+  inapp: {
+    ios: 'Ішкі браузер экранға қоса алмайды. «•••» не компас белгісін басып, «Safari-де ашу» («Открыть в Safari») таңдаңыз немесе сілтемені көшіріп, Safari-ге қойыңыз.',
+    other: 'Ішкі браузер қосымшаны орната алмайды. ⋮ басып, «Chrome-да ашу» («Открыть в Chrome») таңдаңыз немесе сілтемені көшіріп, Chrome-ға қойыңыз.'
+  },
+  steps: {
+    ios: [
+      ['«Бөлісу» батырмасын басыңыз', 'Safari-дің төменгі панеліндегі жоғары бағытталған көрсеткісі бар шаршы. Орысша телефонда: «Поделиться».', 'iOS 26-да: алдымен мекенжайдың оң жағындағы «•••», содан кейін «Бөлісу».'],
+      ['«Басты экранға» таңдаңыз', 'Орысша телефонда: «На экран «Домой»». Көрінбесе, тізімді төмен айналдырыңыз.'],
+      ['«Қосу» батырмасын басыңыз', 'Орысша: «Добавить». «Веб-қосымша ретінде ашу» қосқышын қосулы қалдырыңыз.'],
+      ['Дайын, AIFA экранда', 'Белгішеден ашыңыз. Алғаш ашқанда қайта кіріңіз: iPhone қосымшадағы кіруді Safari-ден бөлек сақтайды.']
+    ],
+    android: [
+      ['Chrome-да ⋮ басыңыз', 'Мекенжай жолағының оң жағындағы үш нүкте.'],
+      ['«Қосымшаны орнату» таңдаңыз', 'Орысша: «Установить приложение» не «Добавить на главный экран».'],
+      ['«Орнату» батырмасын басыңыз', 'Орысша: «Установить». AIFA белгішесі басты экранда және қосымшалар тізімінде пайда болады.']
+    ],
+    pc: [
+      ['Орнату белгішесін басыңыз', 'Chrome мен Edge-де ол мекенжай жолағының оң жағында: көрсеткісі бар экран. Болмаса: ⋮ → «Трансляциялау, сақтау және бөлісу» → «Бетті қосымша ретінде орнату». Edge-де: «…» → «Қосымшалар» → «Осы сайтты қосымша ретінде орнату».'],
+      ['«Орнату» батырмасын басыңыз', 'AIFA өз терезесінде ашылады. Белгіше жұмыс үстелінде және «Бастау» мәзірінде пайда болады, оны тапсырмалар тақтасына бекітуге болады.']
+    ]
+  },
+  alt: {
+    ios: [['iPad-та', 'Дәл солай: «Бөлісу» батырмасы Safari-дің жоғарғы панелінде.'], ['iPhone-дағы Chrome', 'iOS 16.4 және жаңасында: мекенжай жолағының оң жағындағы «Бөлісу» → «Басты экранға».']],
+    android: [['Samsung Internet', 'Төмендегі ≡ басыңыз → «Бетті қосу» («Добавить страницу на») → «Басты экран» («Главный экран»).'], ['Ең оңай жолы', 'AIFA-ның өзінде «Тағы → Қосымша ретінде орнату» ашыңыз: Chrome бірден орнатуды ұсынады.']],
+    pc: [['Mac және Safari', '«Файл» мәзірі → «Dock-қа қосу». AIFA Dock пен Launchpad-та пайда болады.'], ['Ең оңай жолы', 'AIFA-ның өзінде «Тағы → Қосымша ретінде орнату» ашыңыз: Chrome мен Edge бірден орнатуды ұсынады.']]
+  },
+  faq: [
+    ['Бұл нағыз қосымша ма?', 'Бұл сол AIFA веб-нұсқасы, бірақ белгішесі бар және браузерсіз бөлек терезеде. Жазбаларыңыз, әмияндарыңыз бен талдауыңыз сайттағы және телефондағымен бірдей: бәрі аккаунтта сақталады.'],
+    ['Қайта кіру керек пе?', 'iPhone-да иә, бір рет: «Басты экрандағы» қосымша Safari-дегі кіруді көрмейді. Android пен компьютерде әдетте кіру сақталады.'],
+    ['Мәзірде қажетті тармақ жоқ', 'Бет Instagram, Telegram не WhatsApp ішінде емес, Safari-де (iPhone) не Chrome-да (Android, компьютер) ашылғанын тексеріңіз. Компьютердегі Firefox-та орнату жоқ, AIFA-ны Chrome не Edge-де ашыңыз.'],
+    ['Қалай жаңартамын?', 'Ештеңе істеудің қажеті жоқ: әр ашқан сайын соңғы нұсқа ашылады.'],
+    ['Қалай жоямын?', 'Кез келген қосымша сияқты: белгішені басып тұрып, «Жою» таңдаңыз. Аккаунт пен деректер жойылмайды.'],
+    ['Хабарландырулар бола ма?', 'Әзірге жоқ: еске салғыштар тек APK-дан орнатылған Android қосымшасында келеді. Веб-нұсқаға дайындап жатырмыз.']
+  ],
+  done: ['Дайын', 'AIFA-ны кез келген қосымша сияқты белгішеден ашыңыз.', 'AIFA өз терезесінде ашылады, белгішесі тапсырмалар тақтасында.'],
+  ui: {
+    share: 'Бөлісу', copy: 'Көшіру', fav: 'Таңдаулыларға қосу', addHome: 'Басты экранға',
+    cancel: 'Бас тарту', add: 'Қосу', webApp: 'Веб-қосымша ретінде ашу',
+    newTab: 'Жаңа қойынды', history: 'Тарих', downloads: 'Жүктеулер', install: 'Қосымшаны орнату', settings: 'Баптаулар',
+    installQ: 'Қосымшаны орнату керек пе?', installBtn: 'Орнату', cancel2: 'Бас тарту', login: 'Кіру'
+  }
+},
+en: {
+  page: {
+    title: 'Install on your phone and computer',
+    eb: 'AIFA as an app', h1: 'AIFA on your home screen in a minute',
+    lead: 'No more looking for the site every time: add AIFA to your phone or computer and it opens like a regular app, full screen, without the address bar. Nothing to download from a store.',
+    w1: 'One tap', w1p: 'Opens from the home screen, like any other app',
+    w2: 'Full screen', w2p: 'No browser tabs or address bar',
+    w3: 'Always up to date', w3p: 'Updates arrive by themselves, nothing to reinstall',
+    tpc: 'Computer', o1: 'First open AIFA and sign in', ob: 'Open AIFA',
+    ia: 'You opened this page inside Instagram, Telegram or another app',
+    copy: 'Copy link', copied: 'Link copied',
+    fq: 'Questions', home: 'Home', priv: 'Privacy Policy', help: 'Didn’t work? Message us on Telegram',
+    det: { ios: 'Looks like an iPhone or iPad. You can pick another device above.', android: 'Looks like Android. You can pick another device above.', pc: 'Looks like a computer. Phone instructions are in the tabs above.' }
+  },
+  open: {
+    ios: 'Open the link in Safari (or Chrome on iOS 16.4 and later) and sign in. Then 4 steps.',
+    android: 'Open the link in Chrome and sign in. Then 3 steps.',
+    pc: 'Open the link in Chrome or Edge. Then 2 steps.'
+  },
+  inapp: {
+    ios: 'A built-in browser can’t add to the home screen. Tap “•••” or the compass icon and choose “Open in Safari”, or copy the link and paste it into Safari.',
+    other: 'A built-in browser can’t install apps. Tap ⋮ and choose “Open in Chrome”, or copy the link and paste it into Chrome.'
+  },
+  steps: {
+    ios: [
+      ['Tap “Share”', 'The square with an arrow pointing up, in Safari’s bottom bar.', 'On iOS 26: tap “•••” next to the address first, then “Share”.'],
+      ['Choose “Add to Home Screen”', 'Scroll the list down if you don’t see it right away.'],
+      ['Tap “Add”', 'Leave “Open as Web App” switched on.'],
+      ['Done, AIFA is on your screen', 'Open it from the icon. Sign in once more the first time: iPhone keeps the app’s sign-in separate from Safari.']
+    ],
+    android: [
+      ['Tap ⋮ in Chrome', 'The three dots to the right of the address bar.'],
+      ['Choose “Install app”', 'Some versions call it “Add to Home screen”.'],
+      ['Tap “Install”', 'The AIFA icon appears on your home screen and in the app list.']
+    ],
+    pc: [
+      ['Click the install icon', 'In Chrome and Edge it is at the right end of the address bar: a screen with an arrow. If it isn’t there: ⋮ → “Cast, save, and share” → “Install page as app”. In Edge: “…” → “Apps” → “Install this site as an app”.'],
+      ['Click “Install”', 'AIFA opens in its own window. A shortcut appears on the desktop and in the Start menu; you can pin it to the taskbar.']
+    ]
+  },
+  alt: {
+    ios: [['On iPad', 'The same: the Share button is in Safari’s top bar.'], ['Chrome on iPhone', 'On iOS 16.4 and later: the Share button at the right of the address bar → “Add to Home Screen”.']],
+    android: [['Samsung Internet', 'Tap ≡ at the bottom → “Add page to” → “Home screen”.'], ['The quickest way', 'Inside AIFA open “More → Install as an app”: Chrome offers to install right away.']],
+    pc: [['Mac and Safari', 'File menu → “Add to Dock”. AIFA appears in the Dock and Launchpad.'], ['The quickest way', 'Inside AIFA open “More → Install as an app”: Chrome and Edge offer to install right away.']]
+  },
+  faq: [
+    ['Is this a real app?', 'It is the same AIFA web version, with an icon and its own window instead of a browser tab. Your records, wallets and analytics are the same as on the site and on your phone: everything is kept in your account.'],
+    ['Do I need to sign in again?', 'On iPhone yes, once: the home-screen app doesn’t see the Safari sign-in. On Android and computers the sign-in usually carries over.'],
+    ['I can’t find the menu item', 'Make sure the page is open in Safari (iPhone) or Chrome (Android, computer), not inside Instagram, Telegram or WhatsApp. Firefox on a computer can’t install sites; open AIFA in Chrome or Edge.'],
+    ['How do I update it?', 'You don’t: it opens the latest version every time.'],
+    ['How do I remove it?', 'Like any app: press and hold the icon and choose “Remove”. Your account and data stay.'],
+    ['Will there be notifications?', 'Not yet: reminders only reach the Android app installed from the APK. We are preparing them for the web version.']
+  ],
+  done: ['Done', 'Open AIFA from the icon, like any app.', 'AIFA opens in its own window, with its icon on the taskbar.'],
+  ui: {
+    share: 'Share', copy: 'Copy', fav: 'Add to Favorites', addHome: 'Add to Home Screen',
+    cancel: 'Cancel', add: 'Add', webApp: 'Open as Web App',
+    newTab: 'New tab', history: 'History', downloads: 'Downloads', install: 'Install app', settings: 'Settings',
+    installQ: 'Install app?', installBtn: 'Install', cancel2: 'Cancel', login: 'Sign in'
+  }
+}
+};
+
+/* ───────────────────────── Illustrations ─────────────────────────
+   Phone drawings are 240×300, the computer ones 360×240. Everything the
+   reader should press carries tap(): an accent outline plus a pulsing dot. */
+var INK = '#1C1917', SOFT = '#8B857C', HAIR = '#E2DCD2', PAPER = '#FFFFFF', IVORY = '#F1EAE2', ACC = '#C9854F', BLUE = '#0A7AFF';
+
+function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function txt(x, y, s, o) {
+  o = o || {};
+  return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 11) + '" fill="' + (o.fill || INK) + '"' +
+    (o.anchor ? ' text-anchor="' + o.anchor + '"' : '') + (o.weight ? ' font-weight="' + o.weight + '"' : '') +
+    ' font-family="Onest,system-ui,-apple-system,sans-serif">' + esc(s) + '</text>';
+}
+function svg(w, h, body, label, box) {
+  return '<svg viewBox="' + (box || '0 0 ' + w + ' ' + h) + '" role="img" aria-label="' + esc(label) + '" xmlns="http://www.w3.org/2000/svg">' + body + '</svg>';
+}
+// The AIFA mark (ring + dot), at x,y with size s.
+function mark(x, y, s, bg) {
+  var k = s / 100;
+  return '<g transform="translate(' + x + ' ' + y + ') scale(' + k + ')">' +
+    (bg === false ? '' : '<rect width="100" height="100" rx="23" fill="' + IVORY + '" stroke="' + HAIR + '" stroke-width="' + (1 / k) + '"/>') +
+    '<path d="M50 20 A30 30 0 1 1 22 42" fill="none" stroke="' + INK + '" stroke-width="8" stroke-linecap="round"/>' +
+    '<circle cx="27" cy="36" r="11" fill="#D98E63"/></g>';
+}
+function tap(x, y, w, h, r) {
+  // On a wide target (a menu row, a button with a word) the dot sits at
+  // its right end so it never covers the label the reader is looking for.
+  var cx = w > 34 ? x + w - 10 : x + w / 2, cy = y + h / 2;
+  return '<rect x="' + (x - 3) + '" y="' + (y - 3) + '" width="' + (w + 6) + '" height="' + (h + 6) + '" rx="' + (r == null ? 10 : r) + '" fill="none" stroke="' + ACC + '" stroke-width="2.5"/>' +
+    '<circle class="pulse" cx="' + cx + '" cy="' + cy + '" r="14" fill="' + ACC + '"/>' +
+    '<circle cx="' + cx + '" cy="' + cy + '" r="4" fill="' + ACC + '" opacity=".85"/>';
+}
+function phone(inner) {
+  return '<rect x="20" y="4" width="200" height="292" rx="30" fill="' + INK + '"/>' +
+    '<rect x="26" y="10" width="188" height="280" rx="25" fill="' + PAPER + '"/>' +
+    '<clipPath id="scr"><rect x="26" y="10" width="188" height="280" rx="25"/></clipPath>' +
+    '<g clip-path="url(#scr)">' + inner + '</g>' +
+    '<rect x="94" y="16" width="52" height="14" rx="7" fill="' + INK + '"/>';
+}
+// The app's sign-in screen as the page under the browser chrome.
+function appPage(top, u) {
+  return '<rect x="26" y="' + top + '" width="188" height="200" fill="#E7E4DD"/>' +
+    mark(104, top + 34, 32, false) +
+    '<rect x="50" y="' + (top + 86) + '" width="140" height="22" rx="11" fill="' + PAPER + '"/>' +
+    '<rect x="50" y="' + (top + 114) + '" width="140" height="22" rx="11" fill="' + PAPER + '"/>' +
+    '<rect x="50" y="' + (top + 146) + '" width="140" height="24" rx="12" fill="' + INK + '"/>' +
+    txt(120, top + 162, u.login, { anchor: 'middle', fill: PAPER, size: 10, weight: 600 });
+}
+function shareIcon(x, y, c) {
+  return '<g fill="none" stroke="' + (c || BLUE) + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M' + (x - 6) + ' ' + (y - 2) + 'h-2v12h16v-12h-2"/><path d="M' + x + ' ' + (y + 4) + 'v-12M' + (x - 4) + ' ' + (y - 4) + 'l4-4 4 4"/></g>';
+}
+function plusSquare(x, y) {
+  return '<rect x="' + (x - 7) + '" y="' + (y - 7) + '" width="14" height="14" rx="3.5" fill="none" stroke="' + INK + '" stroke-width="1.5"/>' +
+    '<path d="M' + x + ' ' + (y - 4) + 'v8M' + (x - 4) + ' ' + y + 'h8" stroke="' + INK + '" stroke-width="1.5" stroke-linecap="round"/>';
+}
+// Safari with the address bar and toolbar at the bottom (iOS 15–18 layout).
+function safari(u, hiShare) {
+  var bar = '<rect x="26" y="222" width="188" height="68" fill="#F6F5F3"/>' +
+    '<rect x="38" y="228" width="164" height="24" rx="8" fill="' + PAPER + '" stroke="' + HAIR + '"/>' +
+    txt(120, 244, APP_HOST, { anchor: 'middle', size: 9.5, fill: '#3B3733' }) +
+    '<path d="M48 268l-5 5 5 5" fill="none" stroke="' + BLUE + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '<path d="M76 268l5 5-5 5" fill="none" stroke="#BFD8F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>' +
+    shareIcon(120, 274) +
+    '<path d="M152 266v14M152 266c4-2 8-2 10 0v14c-2-2-6-2-10 0M152 266c-4-2-8-2-10 0v14c2-2 6-2 10 0" fill="none" stroke="' + BLUE + '" stroke-width="1.5"/>' +
+    '<rect x="183" y="266" width="12" height="12" rx="2.5" fill="none" stroke="' + BLUE + '" stroke-width="1.6"/><rect x="186" y="263" width="12" height="12" rx="2.5" fill="none" stroke="' + BLUE + '" stroke-width="1.6"/>';
+  return phone('<rect x="26" y="10" width="188" height="24" fill="#E7E4DD"/>' + appPage(30, u) + bar + (hiShare ? tap(108, 262, 24, 24, 8) : ''));
+}
+function iosShareSheet(u) {
+  var rows = [[u.copy, 'copy'], [u.fav, 'star'], [u.addHome, 'add']], s = '';
+  s += '<rect x="26" y="10" width="188" height="280" fill="#E7E4DD"/><rect x="26" y="10" width="188" height="280" fill="#000" opacity=".25"/>';
+  s += '<rect x="26" y="70" width="188" height="230" rx="16" fill="#F2F1EF"/>';
+  s += '<rect x="108" y="76" width="24" height="4" rx="2" fill="#C9C5BF"/>';
+  s += mark(38, 88, 24) + txt(70, 98, 'AIFA', { weight: 600, size: 11 }) + txt(70, 110, APP_HOST, { size: 8.5, fill: SOFT });
+  for (var i = 0; i < 4; i++) s += '<circle cx="' + (52 + i * 45) + '" cy="140" r="15" fill="' + ['#DDE8F7', '#DFF2E2', '#F6E3D6', '#E8E4F3'][i] + '"/>';
+  s += '<rect x="36" y="166" width="168" height="108" rx="12" fill="' + PAPER + '"/>';
+  rows.forEach(function (r, i) {
+    var y = 166 + i * 36;
+    if (i) s += '<line x1="46" x2="194" y1="' + y + '" y2="' + y + '" stroke="' + HAIR + '"/>';
+    s += txt(48, y + 22, r[0], { size: 10.5 });
+    if (r[1] === 'add') s += plusSquare(186, y + 18);
+    else if (r[1] === 'copy') s += '<rect x="180" y="' + (y + 12) + '" width="10" height="12" rx="2" fill="none" stroke="' + INK + '" stroke-width="1.4"/><rect x="184" y="' + (y + 9) + '" width="10" height="12" rx="2" fill="' + PAPER + '" stroke="' + INK + '" stroke-width="1.4"/>';
+    else s += '<path d="M186 ' + (y + 10) + 'l2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z" fill="none" stroke="' + INK + '" stroke-width="1.3" stroke-linejoin="round"/>';
+  });
+  s += tap(38, 240, 164, 32, 10);
+  return phone(s);
+}
+function iosAddDialog(u) {
+  var s = '<rect x="26" y="10" width="188" height="280" fill="#F2F1EF"/>';
+  s += txt(40, 52, u.cancel, { fill: BLUE, size: 10.5 }) + txt(200, 52, u.add, { fill: BLUE, size: 10.5, weight: 600, anchor: 'end' });
+  s += tap(200 - u.add.length * 6.2 - 4, 39, u.add.length * 6.2 + 8, 18, 8);
+  s += '<rect x="36" y="72" width="168" height="70" rx="12" fill="' + PAPER + '"/>' + mark(46, 82, 44);
+  s += txt(100, 100, 'AIFA', { size: 12, weight: 600 }) + '<line x1="100" x2="194" y1="108" y2="108" stroke="' + HAIR + '"/>' + txt(100, 124, APP_HOST, { size: 8.5, fill: SOFT });
+  s += '<rect x="36" y="154" width="168" height="36" rx="12" fill="' + PAPER + '"/>';
+  var label = u.webApp.length > 24 ? u.webApp.slice(0, 22) + '…' : u.webApp;
+  s += txt(46, 176, label, { size: 9.5 });
+  s += '<rect x="170" y="164" width="26" height="16" rx="8" fill="#34C759"/><circle cx="188" cy="172" r="6.5" fill="' + PAPER + '"/>';
+  return phone(s);
+}
+function homeScreen(androidStyle) {
+  var s = '<rect x="26" y="10" width="188" height="280" fill="url(#wall)"/>' +
+    '<defs><linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9D2C7"/><stop offset="1" stop-color="#B9B0A4"/></linearGradient></defs>';
+  var cols = [44, 86, 128, 170], rows = [52, 106, 160], tints = ['#EDE8E1', '#E2DCD3', '#F4F1EC', '#DCD5CB'], n = 0;
+  rows.forEach(function (y, r) {
+    cols.forEach(function (x, c) {
+      if (r === 2 && c === 1) {
+        s += mark(x, y, 28) + txt(x + 14, y + 40, 'AIFA', { anchor: 'middle', size: 8.5, fill: '#2B2722', weight: 600 });
+        s += tap(x, y, 28, 28, androidStyle ? 16 : 9);
+      } else {
+        s += androidStyle ? '<circle cx="' + (x + 14) + '" cy="' + (y + 14) + '" r="14" fill="' + tints[n++ % 4] + '"/>'
+                          : '<rect x="' + x + '" y="' + y + '" width="28" height="28" rx="7" fill="' + tints[n++ % 4] + '"/>';
+        s += '<rect x="' + (x + 5) + '" y="' + (y + 35) + '" width="18" height="4" rx="2" fill="#F4F1EC" opacity=".7"/>';
+      }
+    });
+  });
+  s += androidStyle ? '<rect x="46" y="250" width="148" height="26" rx="13" fill="#F4F1EC" opacity=".8"/>'
+                    : '<rect x="38" y="236" width="164" height="44" rx="18" fill="#F4F1EC" opacity=".55"/>';
+  return phone(s);
+}
+// Chrome on Android: address bar at the top.
+function chrome(u, hiDots) {
+  var s = '<rect x="26" y="10" width="188" height="56" fill="#F6F5F3"/>' +
+    '<rect x="36" y="36" width="140" height="22" rx="11" fill="#E9E6E1"/>' +
+    txt(106, 51, APP_HOST, { anchor: 'middle', size: 9, fill: '#3B3733' }) +
+    '<rect x="181" y="40" width="12" height="12" rx="3" fill="none" stroke="#3B3733" stroke-width="1.4"/>' +
+    '<circle cx="204" cy="41" r="1.7" fill="#3B3733"/><circle cx="204" cy="47" r="1.7" fill="#3B3733"/><circle cx="204" cy="53" r="1.7" fill="#3B3733"/>' +
+    appPage(66, u) + '<rect x="26" y="266" width="188" height="24" fill="#E7E4DD"/>';
+  if (hiDots) s += tap(196, 36, 16, 22, 8);
+  return phone(s);
+}
+function chromeMenu(u) {
+  var s = chrome(u, false).replace(/<rect x="94" y="16"[^>]*\/>$/, '');
+  var items = [u.newTab, u.history, u.downloads, u.install, u.settings];
+  s += '<rect x="76" y="34" width="136" height="174" rx="10" fill="' + PAPER + '" stroke="' + HAIR + '"/>';
+  s += '<g fill="none" stroke="#3B3733" stroke-width="1.3"><path d="M101 47l-3 3 3 3M113 47l3 3-3 3"/><path d="M128 44l2 4 4 .6-3 2.9.7 4.1-3.7-2-3.7 2 .7-4.1-3-2.9 4-.6z"/><path d="M152 45v9M148 50l4 4 4-4M147 56h10"/><circle cx="176" cy="50" r="5"/><path d="M196 46v8M192 50h8"/></g>';
+  items.forEach(function (it, i) {
+    var y = 70 + i * 26;
+    var label = it.length > 23 ? it.slice(0, 22) + '…' : it;
+    s += txt(88, y + 14, label, { size: 9.5, weight: i === 3 ? 600 : 400 });
+  });
+  s += tap(80, 146, 128, 24, 8);
+  return phone(s);
+}
+function chromeInstall(u) {
+  var s = chrome(u, false).replace(/<rect x="94" y="16"[^>]*\/>$/, '');
+  s += '<rect x="26" y="10" width="188" height="280" fill="#000" opacity=".3"/>';
+  s += '<rect x="38" y="92" width="164" height="126" rx="20" fill="' + PAPER + '"/>';
+  s += txt(52, 118, u.installQ, { size: 11, weight: 600 });
+  s += mark(52, 132, 30) + txt(92, 146, 'AIFA', { size: 10.5, weight: 600 }) + txt(92, 158, APP_HOST, { size: 8, fill: SOFT });
+  var w = Math.max(54, u.installBtn.length * 6.4 + 18);
+  s += txt(188 - w - 12, 201, u.cancel2, { size: 9.5, fill: '#5A6B7F', anchor: 'end' });
+  s += '<rect x="' + (188 - w) + '" y="186" width="' + w + '" height="22" rx="11" fill="#2C5E9E"/>' + txt(188 - w / 2, 201, u.installBtn, { size: 9.5, fill: PAPER, anchor: 'middle', weight: 600 });
+  s += tap(188 - w, 186, w, 22, 13);
+  return phone(s);
+}
+// Desktop browser window.
+function desktop(inner) {
+  return '<rect x="6" y="8" width="348" height="222" rx="12" fill="' + PAPER + '" stroke="#CFC8BD"/>' +
+    '<path d="M6 20a12 12 0 0 1 12-12h324a12 12 0 0 1 12 12v18H6z" fill="#EFECE7"/>' +
+    '<circle cx="22" cy="22" r="4" fill="#E2786B"/><circle cx="35" cy="22" r="4" fill="#E9BE5B"/><circle cx="48" cy="22" r="4" fill="#7CC36F"/>' +
+    '<path d="M64 38v-14a6 6 0 0 1 6-6h86a6 6 0 0 1 6 6v14z" fill="' + PAPER + '"/>' + mark(72, 22, 11, false) + txt(88, 31, 'AIFA', { size: 9, weight: 600 }) +
+    '<rect x="6" y="38" width="348" height="28" fill="' + PAPER + '"/>' +
+    '<rect x="44" y="43" width="270" height="18" rx="9" fill="#F1EFEB"/>' + txt(58, 55.5, APP_HOST + '/AIFA-app/lite/', { size: 8.5, fill: '#3B3733' }) +
+    '<path d="M18 52l-4-4m4 4l-4 4m4-4h-0" stroke="#8B857C" stroke-width="1.4" stroke-linecap="round" transform="rotate(180 16 52)"/>' +
+    '<circle cx="334" cy="49" r="1.5" fill="#3B3733"/><circle cx="334" cy="53" r="1.5" fill="#3B3733"/><circle cx="334" cy="57" r="1.5" fill="#3B3733"/>' +
+    '<rect x="6" y="66" width="348" height="164" fill="#E7E4DD"/>' +
+    mark(165, 92, 30, false) + '<rect x="130" y="138" width="100" height="14" rx="7" fill="' + PAPER + '"/><rect x="130" y="158" width="100" height="14" rx="7" fill="' + PAPER + '"/><rect x="130" y="180" width="100" height="16" rx="8" fill="' + INK + '"/>' +
+    inner;
+}
+function installIcon(x, y) {
+  return '<g fill="none" stroke="#3B3733" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="' + (x - 7) + '" y="' + (y - 5) + '" width="14" height="10" rx="1.5"/><path d="M' + (x - 3) + ' ' + (y + 8) + 'h6M' + x + ' ' + (y - 3) + 'v5M' + (x - 2.5) + ' ' + y + 'l2.5 2.5 2.5-2.5"/></g>';
+}
+function pcAddressBar() { return desktop(installIcon(302, 51) + tap(292, 43, 20, 18, 8)); }
+function pcDialog(u) {
+  var w = Math.max(56, u.installBtn.length * 6.4 + 18);
+  var s = installIcon(302, 51) +
+    '<rect x="166" y="64" width="182" height="104" rx="10" fill="' + PAPER + '" stroke="' + HAIR + '"/>' +
+    txt(180, 86, u.installQ, { size: 10.5, weight: 600 }) + mark(180, 98, 26) +
+    txt(214, 110, 'AIFA', { size: 10, weight: 600 }) + txt(214, 121, APP_HOST, { size: 7.5, fill: SOFT }) +
+    '<rect x="' + (334 - w) + '" y="138" width="' + w + '" height="20" rx="10" fill="#2C5E9E"/>' + txt(334 - w / 2, 151.5, u.installBtn, { size: 9, fill: PAPER, anchor: 'middle', weight: 600 }) +
+    txt(334 - w - 10, 151.5, u.cancel2, { size: 9, fill: '#5A6B7F', anchor: 'end' }) + tap(334 - w, 138, w, 20, 12);
+  return desktop(s);
+}
+function pcApp() {
+  return '<rect x="6" y="8" width="348" height="186" rx="12" fill="#E7E4DD" stroke="#CFC8BD"/>' +
+    '<path d="M6 20a12 12 0 0 1 12-12h324a12 12 0 0 1 12 12v10H6z" fill="#E7E4DD"/>' +
+    mark(14, 13, 12, false) + txt(31, 23, 'AIFA', { size: 9, weight: 600 }) +
+    '<path d="M312 20h8M330 16h8v8h-8z" stroke="#6F6A62" stroke-width="1.2" fill="none"/>' +
+    '<rect x="22" y="40" width="96" height="140" rx="10" fill="' + PAPER + '"/><rect x="128" y="40" width="210" height="64" rx="10" fill="' + PAPER + '"/><rect x="128" y="112" width="210" height="68" rx="10" fill="' + PAPER + '"/>' +
+    '<path d="M150 90a24 24 0 0 1 40-18" fill="none" stroke="' + INK + '" stroke-width="5" stroke-linecap="round"/><rect x="200" y="60" width="90" height="8" rx="4" fill="#E2DCD2"/><rect x="200" y="76" width="60" height="8" rx="4" fill="#E2DCD2"/>' +
+    '<rect x="0" y="206" width="360" height="30" rx="8" fill="#2A2724"/>' +
+    '<rect x="128" y="213" width="16" height="16" rx="4" fill="#4A4642"/><rect x="152" y="213" width="16" height="16" rx="4" fill="#4A4642"/>' +
+    mark(176, 213, 16) + '<rect x="181" y="231" width="6" height="2" rx="1" fill="#F1EAE2"/>' + tap(176, 213, 16, 16, 7) +
+    '<rect x="200" y="213" width="16" height="16" rx="4" fill="#4A4642"/>';
+}
+
+var ART = {
+  ios: [function (u) { return svg(240, 300, safari(u, true), u.share); },
+        function (u) { return svg(240, 300, iosShareSheet(u), u.addHome); },
+        function (u) { return svg(240, 300, iosAddDialog(u), u.add); },
+        function () { return svg(240, 300, homeScreen(false), 'AIFA'); }],
+  android: [function (u) { return svg(240, 300, chrome(u, true), '⋮'); },
+            function (u) { return svg(240, 300, chromeMenu(u), u.install); },
+            function (u) { return svg(240, 300, chromeInstall(u), u.installBtn); },
+            function () { return svg(240, 300, homeScreen(true), 'AIFA'); }],
+  // The first two are cropped to the address bar's right end, where the
+  // action is; the whole window would make it a few pixels wide.
+  pc: [function (u) { return svg(360, 240, pcAddressBar(u), u.install, '150 4 210 150'); },
+       function (u) { return svg(360, 240, pcDialog(u), u.installBtn, '150 4 210 170'); },
+       function () { return svg(360, 240, pcApp(), 'AIFA'); }]
+};
+
+/* ───────────────────────── Page ───────────────────────── */
+var ua = navigator.userAgent || '';
+var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+var isAndroid = /Android/i.test(ua);
+var inApp = /Instagram|FBAN|FBAV|FB_IAB|Telegram|TikTok|musical_ly|BytedanceWebview|Line\/|WhatsApp|; wv\)/i.test(ua);
+var detected = isIOS ? 'ios' : isAndroid ? 'android' : 'pc';
+var lang = 'ru', os = detected;
+
+function render() {
+  var L = T[lang], u = L.ui;
+  document.documentElement.lang = lang;
+  document.title = 'AIFA — ' + L.page.title;
+  document.querySelectorAll('[data-t]').forEach(function (n) {
+    var v = L.page[n.dataset.t];
+    if (typeof v === 'string') n.textContent = v;
+  });
+  document.querySelectorAll('[data-set]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
+  document.querySelectorAll('[data-os]').forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.os === os)); });
+  document.getElementById('detected').textContent = os === detected ? L.page.det[detected] : '';
+  document.getElementById('openText').textContent = L.open[os];
+  document.getElementById('openApp').href = APP_URL + (lang === 'ru' ? '' : '?lang=' + lang);
+  document.getElementById('privacy').href = 'privacy.html?lang=' + lang;
+
+  var w = document.getElementById('inapp');
+  w.classList.toggle('on', inApp);
+  document.getElementById('inappText').textContent = isIOS ? L.inapp.ios : L.inapp.other;
+
+  // Steps: the two phone guides end on the home screen picture, which has
+  // no text of its own in the Android list, so it rides on the last step.
+  var steps = L.steps[os], arts = ART[os], html = '';
+  steps.forEach(function (st, i) {
+    var art = arts[i](u);
+    html += '<li class="step"><div class="art' + (os === 'pc' ? ' wide' : '') + '">' + art + '</div>' +
+      '<h3><span class="num">' + (i + 1) + '</span><span>' + esc(st[0]) + '</span></h3>' +
+      '<p>' + esc(st[1]) + '</p>' + (st[2] ? '<p>' + esc(st[2]) + '</p>' : '') + '</li>';
+  });
+  if (arts.length > steps.length) {
+    html += '<li class="step"><div class="art' + (os === 'pc' ? ' wide' : '') + '">' + arts[arts.length - 1](u) + '</div>' +
+      '<h3><span class="num">✓</span><span>' + esc(L.done[0]) + '</span></h3>' +
+      '<p>' + esc(os === 'pc' ? L.done[2] : L.done[1]) + '</p></li>';
+  }
+  document.getElementById('steps').innerHTML = html;
+  document.getElementById('alt').innerHTML = L.alt[os].map(function (a) { return '<div><b>' + esc(a[0]) + '</b>' + esc(a[1]) + '</div>'; }).join('');
+  document.getElementById('faq').innerHTML = L.faq.map(function (f) { return '<details><summary>' + esc(f[0]) + '</summary><p>' + esc(f[1]) + '</p></details>'; }).join('');
+}
+
+function pickLang() {
+  var q = (location.search.match(/[?&]lang=(\w+)/) || [])[1], saved = null;
+  try { saved = localStorage.getItem('aifa-lang'); } catch (e) {}
+  var l = q || saved || (/^kk/i.test(navigator.language || '') ? 'kk' : (!navigator.language || /^(ru|uk|be|ky|uz|tg|hy|az|ka|tk)/i.test(navigator.language)) ? 'ru' : 'en');
+  return T[l] ? l : 'ru';
+}
+var qos = (location.search.match(/[?&]os=(ios|android|pc)\b/) || [])[1];
+if (qos) os = qos;
+lang = pickLang();
+
+document.querySelectorAll('[data-set]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    lang = b.dataset.set;
+    try { localStorage.setItem('aifa-lang', lang); } catch (e) {}
+    render();
+  });
+});
+document.querySelectorAll('[data-os]').forEach(function (b) {
+  b.addEventListener('click', function () { os = b.dataset.os; render(); });
+});
+document.getElementById('copy').addEventListener('click', function () {
+  var url = location.href, t = document.getElementById('toast');
+  function done() { t.textContent = T[lang].page.copied; t.classList.add('on'); setTimeout(function () { t.classList.remove('on'); }, 1800); }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { prompt('', url); });
+  else prompt('', url);
+});
+render();
+})();
+</script>
+</body>
+</html>

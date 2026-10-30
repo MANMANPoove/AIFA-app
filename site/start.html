@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://aifa.tail7106db.ts.net/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AIFA">
+<meta property="og:title" content="AIFA: учёт личных финансов, трата записывается одной фразой">
+<meta property="og:image" content="https://aifa.tail7106db.ts.net/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>AIFA</title>
+<meta name="description" content="AIFA: учёт личных финансов. Напишите «кофе 1500», и трата записана.">
+<meta name="theme-color" content="#141210">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23F4F1EB'/%3E%3Cpath d='M50 22A28 28 0 1 1 25.75 36' fill='none' stroke='%231C1917' stroke-width='9' stroke-linecap='round'/%3E%3Ccircle cx='25.75' cy='36' r='11' fill='%23B59877'/%3E%3C/svg%3E">
+<style>
+/* The main page (was variant B of the short-path test, hypothesis 2): one
+   screen with what AIFA is, its three main features, one screenshot and the
+   «Зарегистрироваться» button; the demo is a small link. The sign-up form
+   is not opened here: the button leads to it. index.html sends every
+   visitor here; the full landing stays at ?start=landing.
+   Same palette and fonts as index.html. */
+@font-face{font-family:"Onest";font-weight:400;font-display:swap;src:url(fonts/Onest-Regular.ttf) format("truetype")}
+@font-face{font-family:"Onest";font-weight:600;font-display:swap;src:url(fonts/Onest-SemiBold.ttf) format("truetype")}
+@font-face{font-family:"Onest";font-weight:700;font-display:swap;src:url(fonts/Onest-Bold.ttf) format("truetype")}
+@font-face{font-family:"JetBrains Mono";font-weight:600;font-display:swap;src:url(fonts/JetBrainsMono-SemiBold.ttf) format("truetype")}
+:root{
+  color-scheme:dark;
+  --dark:#141210; --ink:#1C1917; --card:#211E1B; --hair-d:rgba(247,243,238,.1);
+  --on-dark:#F7F3EE; --soft-d:#A39E96; --terra:#B59877; --gold:linear-gradient(135deg,#C9B08F,#9C7B58);
+  --sans:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.22,.68,.24,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--dark);color:var(--on-dark)}
+body{font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+h1,p{margin:0}
+a{color:inherit}
+.top{display:flex;align-items:center;gap:1rem;padding:max(14px,env(safe-area-inset-top)) 16px 0;max-width:1080px;width:100%;margin:0 auto}
+.logo{font-weight:700;letter-spacing:.18em;font-size:.82rem}
+.langsw{margin-left:auto;display:flex;border:1px solid var(--hair-d);border-radius:999px;padding:3px}
+.langsw button{border:0;background:transparent;cursor:pointer;font:600 .66rem var(--mono);letter-spacing:.08em;padding:.4rem .6rem;border-radius:999px;color:var(--soft-d)}
+.langsw button.on{background:var(--on-dark);color:var(--ink)}
+main{flex:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,4rem);align-items:center;max-width:1080px;width:100%;margin:0 auto;padding:clamp(1rem,3vh,2.5rem) 16px max(16px,env(safe-area-inset-bottom))}
+.eyebrow{font:600 .66rem var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--terra)}
+h1{font-size:clamp(1.85rem,1.2rem + 3vw,3.4rem);font-weight:700;letter-spacing:-.04em;line-height:1.02;margin:.7rem 0 .8rem;text-wrap:balance}
+h1 q{quotes:none;font-family:var(--mono);font-weight:600;letter-spacing:-.06em;white-space:nowrap;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--soft-d);font-size:clamp(.95rem,.9rem + .25vw,1.08rem);max-width:34rem}
+ul{list-style:none;margin:1.2rem 0 1.5rem;padding:0;display:grid;gap:.75rem}
+li{display:grid;grid-template-columns:2rem 1fr;gap:.75rem;align-items:start}
+li i{width:2rem;height:2rem;border-radius:10px;background:var(--card);display:grid;place-items:center;font-style:normal;color:var(--terra);font:600 .8rem var(--mono)}
+li b{display:block;font-weight:600;font-size:.98rem}
+li span{color:var(--soft-d);font-size:.88rem}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem 1.8rem;border-radius:999px;font-weight:600;text-decoration:none;
+  background:var(--on-dark);color:var(--ink);box-shadow:0 18px 36px -20px rgba(0,0,0,.9);transition:background .25s ease,box-shadow .35s var(--ease)}
+.btn:hover{background:#fff;box-shadow:0 0 0 4px rgba(181,152,119,.22),0 22px 40px -20px #000}
+.demo{color:var(--soft-d);font-size:.86rem;text-underline-offset:3px}
+.demo:hover{color:var(--on-dark)}
+.note{color:var(--soft-d);font-size:.8rem;margin-top:.9rem}
+.shot{justify-self:center;width:min(300px,100%);aspect-ratio:640/1385;border-radius:34px;padding:8px;background:#0b0a09;border:1px solid var(--hair-d);box-shadow:0 40px 80px -40px #000}
+.shot img{width:100%;height:100%;border-radius:27px;display:block;object-fit:cover;object-position:top}
+@media(max-width:760px){
+  main{grid-template-columns:1fr;align-content:start;gap:1.2rem}
+  .btn{width:100%}
+  .cta{flex-direction:column;align-items:stretch;text-align:center}
+  /* One screen on a phone: the text and the button first, the screenshot's
+     top below them, cropped. */
+  .shot{width:min(260px,72vw);aspect-ratio:auto;height:min(46vh,380px);border-radius:28px 28px 0 0;border-bottom:0;padding-bottom:0}
+  .shot img{border-radius:21px 21px 0 0}
+}
+</style>
+</head>
+<body>
+<div class="top">
+  <span class="logo">AIFA</span>
+  <div class="langsw" id="langsw" role="group" aria-label="Язык · Тіл · Language">
+    <button type="button" data-l="ru" class="on" lang="ru">RU</button><button type="button" data-l="kk" lang="kk">ҚАЗ</button><button type="button" data-l="en" lang="en">EN</button>
+  </div>
+</div>
+<main>
+  <div>
+    <p class="eyebrow" data-t="eb">Личные финансы · Казахстан</p>
+    <h1 data-t="h1">Напишите <q>«кофе&nbsp;1500»</q>, и&nbsp;трата записана</h1>
+    <p class="sub" data-t="sub">Учёт денег без таблиц и форм: AIFA сама понимает, что, где и на что вы потратили.</p>
+    <ul>
+      <li><i>1</i><p><b data-t="f1">Фразой или голосом</b><span data-t="f1p">«такси 2300», «кофе 1500 и обед 3000»: каждая трата записана за секунду.</span></p></li>
+      <li><i>2</i><p><b data-t="f2">Выписка Kaspi и Halyk</b><span data-t="f2p">Загрузите PDF, и операции за месяц разложены по категориям.</span></p></li>
+      <li><i>3</i><p><b data-t="f3">Понимает казахский</b><span data-t="f3p">Пишите и говорите по-казахски, по-русски или по-английски.</span></p></li>
+    </ul>
+    <div class="cta">
+      <a class="btn" id="signup" href="https://manmanpoove.github.io/AIFA-app/lite/?signup=1" target="_blank" rel="noopener" data-t="go">Зарегистрироваться</a>
+      <a class="demo" id="demo" href="https://manmanpoove.github.io/AIFA-app/lite/?demo=1" target="_blank" rel="noopener" data-t="demo">или сначала посмотреть демо</a>
+      <a class="demo" href="install.html" data-t="inst">как поставить AIFA иконкой на телефон</a>
+    </div>
+  </div>
+  <div class="shot"><img id="shot" src="shots/home-ru.webp" alt="" width="640" height="1385" decoding="async"></div>
+</main>
+<script>
+(function(){
+'use strict';
+var STR = {
+  kk: {eb: 'Жеке қаржы · Қазақстан',
+       h1: '<q>«кофе&nbsp;1500»</q> деп жазыңыз, шығыс бірден жазылады',
+       sub: 'Кестесіз және формасыз ақша есебі: AIFA не, қайда және неге жұмсағаныңызды өзі түсінеді.',
+       f1: 'Сөйлеммен не дауыспен', f1p: '«такси 2300», «кофе 1500 және түскі ас 3000»: әр шығыс бір секундта жазылады.',
+       f2: 'Kaspi және Halyk үзіндісі', f2p: 'PDF жүктеңіз, айдағы операциялар санаттарға бөлінеді.',
+       f3: 'Қазақ тілін түсінеді', f3p: 'Қазақша, орысша не ағылшынша жазыңыз және сөйлеңіз.',
+       go: 'Тіркелу', demo: 'не алдымен демоны көру', inst: 'AIFA-ны телефонға белгіше ретінде қалай қою керек'},
+  en: {eb: 'Personal finance · Kazakhstan',
+       h1: 'Type <q>“coffee&nbsp;1500”</q> and the spend is recorded',
+       sub: 'Money tracking without spreadsheets or forms: AIFA works out what you spent, where and on what.',
+       f1: 'A phrase or your voice', f1p: '“taxi 2300”, “coffee 1500 and lunch 3000”: every spend is recorded in a second.',
+       f2: 'Kaspi and Halyk statements', f2p: 'Upload the PDF, and the month’s transactions are sorted into categories.',
+       f3: 'Understands Kazakh', f3p: 'Write and speak in Kazakh, Russian or English.',
+       go: 'Sign up', demo: 'or see the demo first', inst: 'how to put AIFA on your phone as an icon'}
+};
+var RU = {};
+var nodes = document.querySelectorAll('[data-t]');
+nodes.forEach(function(n){ RU[n.dataset.t] = n.innerHTML; });
+
+var APP_URL = 'https://manmanpoove.github.io/AIFA-app/lite/';
+var API = /(^|\.)tail7106db\.ts\.net$/.test(location.hostname) ? '/api/v1' : 'https://aifa.tail7106db.ts.net/api/v1';
+var q = new URLSearchParams(location.search);
+function store(k, v){ try { if (v == null) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+
+// The same label and visitor id as index.html (see its comments).
+var clean = function(v){ return String(v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '').slice(0, 40).replace(/^[-_]+|[-_]+$/g, ''); };
+var SRC = (function(){
+  var fromUrl = clean(q.get('src'));
+  if (fromUrl) { store('aifa_src', JSON.stringify({v: fromUrl, t: Date.now()})); return fromUrl; }
+  try { var kept = JSON.parse(store('aifa_src') || 'null'); if (kept && kept.v && Date.now() - kept.t < 30 * 864e5) return clean(kept.v) || 'landing'; } catch (e) {}
+  return 'landing';
+})();
+var VISITOR = (function(){
+  var id = store('aifa_vid') || '';
+  if (!/^[0-9a-z]{16,40}$/.test(id)) {
+    id = (Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)).slice(0, 32);
+    store('aifa_vid', id);
+  }
+  return id;
+})();
+// This page is the main page for everyone now (index.html sends every
+// visitor here), so the short-path test is over: no variant, «F» to the app.
+var FORCED = true;
+var VARIANT = '';
+var INTERNAL = store('aifa_internal') === '1';
+
+function beacon(kind, extra){
+  var body = {src: SRC, visitor: VISITOR, kind: kind, variant: VARIANT, internal: INTERNAL};
+  for (var k in extra || {}) body[k] = extra[k];
+  try {
+    fetch(API + '/sources/hit', {method: 'POST', keepalive: true, headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)}).catch(function(){});
+  } catch (e) {}
+}
+var ref = '';
+try { var r = document.referrer ? new URL(document.referrer).hostname : ''; if (r && r !== location.hostname) ref = r.toLowerCase().slice(0, 80); } catch (e) {}
+beacon('visit', {referrer: ref});
+beacon('start_view');
+
+// How long the page was looked at, once it is hidden (the tab closed or
+// left). The page fits one screen, so scroll is 100 unless it did not.
+var shownAt = Date.now(), maxScroll = 0;
+function scrolled(){
+  var h = document.documentElement.scrollHeight - innerHeight;
+  maxScroll = Math.max(maxScroll, h <= 0 ? 100 : Math.round(scrollY / h * 100));
+}
+addEventListener('scroll', scrolled, {passive: true});
+scrolled();
+document.addEventListener('visibilitychange', function(){
+  if (document.visibilityState === 'hidden') beacon('leave', {scroll: Math.min(100, maxScroll), seconds: Math.round((Date.now() - shownAt) / 1000)});
+  else shownAt = Date.now();
+});
+
+var LANG = 'ru';
+function links(){
+  var tail = '&lang=' + LANG + '&src=' + encodeURIComponent(SRC) + '&vid=' + VISITOR + '&ab=' + (FORCED ? 'F' : 'B');
+  document.getElementById('signup').href = APP_URL + '?signup=1' + tail;
+  document.getElementById('demo').href = APP_URL + '?demo=1' + tail;
+}
+document.getElementById('signup').addEventListener('click', function(){ beacon('click_signup'); });
+document.getElementById('demo').addEventListener('click', function(){ beacon('click_demo'); });
+
+function setLang(l){
+  if (l !== 'kk' && l !== 'en') l = 'ru';
+  LANG = l;
+  document.documentElement.lang = l;
+  nodes.forEach(function(n){ var v = l === 'ru' ? RU[n.dataset.t] : STR[l][n.dataset.t]; if (v != null) n.innerHTML = v; });
+  document.querySelectorAll('#langsw button').forEach(function(b){ b.classList.toggle('on', b.dataset.l === l); b.setAttribute('aria-pressed', b.dataset.l === l); });
+  document.getElementById('shot').src = 'shots/home-' + l + '.webp';
+  links();
+  store('aifa-lang', l);
+}
+document.querySelectorAll('#langsw button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.l); }); });
+var start = q.get('lang') || store('aifa-lang');
+if (!start) {
+  var nl = navigator.language || '';
+  start = /^kk/i.test(nl) ? 'kk' : (!nl || /^(ru|uk|be|ky|uz|tg|hy|az|ka|tk)/i.test(nl)) ? 'ru' : 'en';
+}
+setLang(start);
+})();
+</script>
+</body>
+</html>

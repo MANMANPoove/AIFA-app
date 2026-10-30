@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIFA — Удаление аккаунта</title>
+<meta name="robots" content="index,follow">
+<!-- Google Play requires a web page where people can delete their account
+     without the app installed (Play Console → App content → Data deletion).
+     Signs in with email and password and calls the same DELETE /account the
+     app does. An account created through Google has no password: it can set
+     one through «Забыли пароль?» or delete from the web app's «Ещё». -->
+<style>
+@font-face{font-family:"Onest";font-weight:400;font-display:swap;src:url(fonts/Onest-Regular.ttf) format("truetype")}
+@font-face{font-family:"Onest";font-weight:600;font-display:swap;src:url(fonts/Onest-SemiBold.ttf) format("truetype")}
+:root{--ink:#1C1917;--paper:#FBFAF7;--hair:#E6E1D8;--soft:#6F6A62;--accent:#9C7B58;--neg:#A9574A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:520px;margin:0 auto;padding:32px 16px 64px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}
+header a{color:var(--ink);text-decoration:none;font-weight:600}
+nav button{border:1px solid var(--hair);background:#fff;border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:14px}
+nav button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+h1{font-size:26px;line-height:1.2;margin:0 0 12px}
+p,li{margin:0 0 10px}
+ul{padding-left:20px}
+a{color:var(--accent)}
+form{margin-top:20px;display:grid;gap:12px}
+label{display:grid;gap:4px;font-size:14px;color:var(--soft)}
+input[type=email],input[type=password]{font:inherit;padding:12px 14px;border:1px solid var(--hair);border-radius:12px;background:#fff;color:var(--ink)}
+.check{display:flex;gap:10px;align-items:flex-start;color:var(--ink);font-size:15px}
+.check input{margin-top:5px}
+button.del{font:inherit;font-weight:600;padding:14px;border:0;border-radius:12px;background:var(--neg);color:#fff;cursor:pointer}
+button.del:disabled{opacity:.5;cursor:default}
+.msg{min-height:1.4em;font-size:15px}
+.msg.err{color:var(--neg)}
+.box{border:1px solid var(--hair);border-radius:14px;padding:14px 16px;background:#fff;margin-top:20px;font-size:15px}
+.done{display:none}
+body.ok .done{display:block}
+body.ok form{display:none}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <a href="/">AIFA</a>
+  <nav aria-label="Язык / Тіл / Language">
+    <button type="button" data-set="ru">RU</button>
+    <button type="button" data-set="kk">KZ</button>
+    <button type="button" data-set="en">EN</button>
+  </nav>
+</header>
+
+<h1 data-t="h1"></h1>
+<p data-t="intro"></p>
+<ul>
+  <li data-t="what"></li>
+  <li data-t="now"></li>
+  <li data-t="store"></li>
+</ul>
+<p data-t="inapp"></p>
+
+<form id="f" novalidate>
+  <label><span data-t="email"></span><input id="email" type="email" autocomplete="email" required></label>
+  <label><span data-t="password"></span><input id="password" type="password" autocomplete="current-password" required></label>
+  <label class="check"><input id="sure" type="checkbox"><span data-t="sure"></span></label>
+  <div class="msg" id="msg" role="status" aria-live="polite"></div>
+  <button class="del" id="go" type="submit" data-t="go"></button>
+</form>
+
+<div class="box done" data-t="done"></div>
+
+<div class="box">
+  <p data-t="google"></p>
+  <p><a id="forgot" href="https://manmanpoove.github.io/AIFA-app/lite/" data-t="forgotLink" target="_blank" rel="noopener"></a></p>
+  <p data-t="help"></p>
+</div>
+<p><a href="/privacy.html" data-t="privacy"></a></p>
+</main>
+<script>
+(function () {
+  var T = {
+    ru: {
+      title: 'AIFA — Удаление аккаунта',
+      h1: 'Удаление аккаунта AIFA',
+      intro: 'Здесь можно удалить аккаунт AIFA, даже если приложение уже не установлено.',
+      what: 'Удаляются аккаунт и все данные в нём: операции, кошельки, долги, кредиты, чеки, банковские выписки, история чата и журнал действий.',
+      now: 'Удаление происходит сразу и навсегда, восстановить данные будет нельзя. Если хотите сохранить записи, сначала выгрузите их в Excel: «Ещё → Экспорт» в приложении.',
+      store: 'Подписку, оформленную в App Store или Google Play, отмените в настройках магазина: удаление аккаунта само её не отменяет.',
+      inapp: 'В приложении то же самое: «Ещё → Удалить аккаунт».',
+      email: 'Почта',
+      password: 'Пароль',
+      sure: 'Я понимаю, что все мои данные будут удалены без возможности восстановления',
+      go: 'Удалить аккаунт навсегда',
+      busy: 'Удаляем…',
+      needSure: 'Отметьте, что вы понимаете последствия.',
+      needFields: 'Введите почту и пароль.',
+      badLogin: 'Неверная почта или пароль.',
+      fail: 'Не получилось. Проверьте интернет и попробуйте ещё раз.',
+      done: 'Аккаунт и все данные удалены.',
+      google: 'Входите через Google и пароля нет? Откройте веб-версию, войдите через Google и выберите «Ещё → Удалить аккаунт». Или задайте пароль через «Забыли пароль?» на экране входа, а затем вернитесь сюда.',
+      forgotLink: 'Открыть веб-версию AIFA',
+      help: 'Не получается? Напишите нам в приложении («Ещё → Написать нам») или позвоните: +7 (708) 759-59-85.',
+      privacy: 'Политика конфиденциальности'
+    },
+    kk: {
+      title: 'AIFA — Аккаунтты жою',
+      h1: 'AIFA аккаунтын жою',
+      intro: 'Мұнда қосымша орнатылмаған болса да, AIFA аккаунтын жоюға болады.',
+      what: 'Аккаунт және ондағы барлық деректер жойылады: операциялар, әмияндар, қарыздар, несиелер, чектер, банк үзінділері, чат тарихы және әрекеттер журналы.',
+      now: 'Жою бірден және біржола орындалады, деректерді қалпына келтіру мүмкін болмайды. Жазбаларды сақтағыңыз келсе, алдымен оларды Excel-ге жүктеп алыңыз: қосымшада «Тағы → Экспорт».',
+      store: 'App Store немесе Google Play арқылы рәсімделген жазылымды дүкен баптауларында тоқтатыңыз: аккаунтты жою оны өзі тоқтатпайды.',
+      inapp: 'Қосымшада да солай: «Тағы → Аккаунтты жою».',
+      email: 'Пошта',
+      password: 'Құпиясөз',
+      sure: 'Барлық деректерім қалпына келтіру мүмкіндігінсіз жойылатынын түсінемін',
+      go: 'Аккаунтты біржола жою',
+      busy: 'Жойып жатырмыз…',
+      needSure: 'Салдарын түсінетініңізді белгілеңіз.',
+      needFields: 'Пошта мен құпиясөзді енгізіңіз.',
+      badLogin: 'Пошта немесе құпиясөз қате.',
+      fail: 'Болмады. Интернетті тексеріп, қайталап көріңіз.',
+      done: 'Аккаунт және барлық деректер жойылды.',
+      google: 'Google арқылы кіресіз және құпиясөзіңіз жоқ па? Веб-нұсқаны ашып, Google арқылы кіріңіз де, «Тағы → Аккаунтты жою» таңдаңыз. Немесе кіру экранындағы «Құпиясөзді ұмыттыңыз ба?» арқылы құпиясөз орнатып, осында қайта оралыңыз.',
+      forgotLink: 'AIFA веб-нұсқасын ашу',
+      help: 'Болмай жатыр ма? Қосымшада жазыңыз («Тағы → Бізге жазу») немесе қоңырау шалыңыз: +7 (708) 759-59-85.',
+      privacy: 'Құпиялылық саясаты'
+    },
+    en: {
+      title: 'AIFA — Delete account',
+      h1: 'Delete your AIFA account',
+      intro: 'You can delete your AIFA account here, even if the app is no longer installed.',
+      what: 'The account and all data in it are deleted: transactions, wallets, debts, credits, receipts, bank statements, chat history and the activity log.',
+      now: 'Deletion is immediate and permanent; the data cannot be restored. To keep your records, export them to Excel first: More → Export in the app.',
+      store: 'A subscription bought through the App Store or Google Play must be cancelled in the store settings: deleting the account does not cancel it.',
+      inapp: 'The same is available in the app: More → Delete account.',
+      email: 'Email',
+      password: 'Password',
+      sure: 'I understand that all my data will be deleted and cannot be restored',
+      go: 'Delete account permanently',
+      busy: 'Deleting…',
+      needSure: 'Please confirm that you understand the consequences.',
+      needFields: 'Enter your email and password.',
+      badLogin: 'Wrong email or password.',
+      fail: 'That did not work. Check your connection and try again.',
+      done: 'Your account and all its data have been deleted.',
+      google: 'Signed in with Google and have no password? Open the web version, sign in with Google and choose More → Delete account. Or set a password with “Forgot password?” on the sign-in screen, then come back here.',
+      forgotLink: 'Open the AIFA web version',
+      help: 'Having trouble? Write to us in the app (More → Contact us) or call +7 (708) 759-59-85.',
+      privacy: 'Privacy Policy'
+    }
+  };
+  var lang = 'ru';
+  var m = document.getElementById('msg');
+  function msg(text, err) { m.textContent = text; m.className = 'msg' + (err ? ' err' : ''); }
+  function set(l) {
+    lang = T[l] ? l : 'ru';
+    document.documentElement.lang = lang;
+    document.title = T[lang].title;
+    document.querySelectorAll('[data-t]').forEach(function (el) {
+      el.textContent = T[lang][el.dataset.t];
+    });
+    document.querySelectorAll('[data-set]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.set === lang));
+    });
+    msg('', false);
+  }
+  var q = (location.search.match(/[?&]lang=(\w+)/) || [])[1];
+  var saved = null;
+  try { saved = localStorage.getItem('aifa-lang'); } catch (e) {}
+  set(q || saved || (/^kk/i.test(navigator.language || '') ? 'kk' : (!navigator.language || /^(ru|uk|be|ky|uz|tg|hy|az|ka|tk)/i.test(navigator.language)) ? 'ru' : 'en'));
+  document.querySelectorAll('[data-set]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      set(b.dataset.set);
+      try { localStorage.setItem('aifa-lang', b.dataset.set); } catch (e) {}
+    });
+  });
+
+  var api = '/api/v1';
+  function call(method, path, body, token) {
+    var h = { 'Content-Type': 'application/json', 'Accept-Language': lang };
+    if (token) h.Authorization = 'Bearer ' + token;
+    return fetch(api + path, { method: method, headers: h, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); });
+  }
+
+  var go = document.getElementById('go');
+  document.getElementById('f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value;
+    if (!email || !password) return msg(T[lang].needFields, true);
+    if (!document.getElementById('sure').checked) return msg(T[lang].needSure, true);
+    go.disabled = true;
+    msg(T[lang].busy, false);
+    call('POST', '/auth/login', { email: email, password: password })
+      .then(function (r) {
+        if (!r.ok || !r.body.data || !r.body.data.access_token) {
+          throw new Error(r.status === 401 ? T[lang].badLogin : (r.body.error || T[lang].fail));
+        }
+        return call('DELETE', '/account', { password: password, confirm: true }, r.body.data.access_token);
+      })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.body.error || T[lang].fail);
+        document.body.classList.add('ok');
+      })
+      .catch(function (err) {
+        msg(err && err.message && err.message !== 'Failed to fetch' ? err.message : T[lang].fail, true);
+      })
+      .then(function () { go.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>

@@ -29,7 +29,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="AIFA">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
   <link rel="icon" type="image/png" href="favicon.png"/>
 
@@ -256,6 +256,34 @@
       // A low-rate safety net for WebViews that drop the resize event
       // entirely; when the sizes agree this is one layout read.
       setInterval(check, 1500);
+    })();
+  </script>
+  <script>
+    // «Ещё → Установить как приложение» (core/platform/install_app_web.dart).
+    // Chrome, Edge and Samsung Internet fire beforeinstallprompt once, early,
+    // and only that event can open their install dialog later, so it is kept
+    // here before Flutter has even started. Not preventDefault()-ed: the
+    // browser's own install hint stays as it was.
+    (function () {
+      var deferred = null;
+      window.addEventListener('beforeinstallprompt', function (e) { deferred = e; });
+      window.addEventListener('appinstalled', function () { deferred = null; });
+      window.__aifaInstallMode = function () {
+        var standalone = navigator.standalone === true ||
+            (window.matchMedia && (matchMedia('(display-mode: standalone)').matches ||
+                matchMedia('(display-mode: window-controls-overlay)').matches));
+        if (standalone) return 'installed';
+        return deferred ? 'prompt' : 'guide';
+      };
+      window.__aifaInstallPrompt = function () {
+        if (!deferred) return Promise.resolve('unavailable');
+        var e = deferred;
+        deferred = null;
+        return Promise.resolve(e.prompt())
+          .then(function () { return e.userChoice; })
+          .then(function (c) { return (c && c.outcome) || 'dismissed'; })
+          .catch(function () { return 'unavailable'; });
+      };
     })();
   </script>
   <script src="flutter_bootstrap.js" async></script>
