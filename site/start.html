@@ -178,9 +178,11 @@ html.color .t-hero::before{background:radial-gradient(closest-side,rgba(255,138,
 .final{text-align:center;padding:clamp(60px,10vh,110px) 16px clamp(60px,10vh,100px)}
 .final h2{font-size:clamp(2rem,1.2rem + 3.4vw,3.6rem);font-weight:700;letter-spacing:-.045em;line-height:1.04;text-wrap:balance}
 .final .cta{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:12px}
-footer{border-top:1px solid var(--hair);padding:22px 16px 30px;text-align:center;color:var(--soft);font-size:.84rem;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px}
+footer{border-top:1px solid var(--hair);padding:22px 16px 30px;text-align:center;color:var(--soft);font-size:.84rem;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 22px}
 footer a{color:var(--on);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--hair)}
 footer a:hover{text-decoration-color:currentColor}
+footer a.ftfaq{display:inline-block;border:1px solid var(--hair);border-radius:999px;padding:3px 12px;text-decoration:none;font-weight:600}
+footer a.ftfaq:hover{border-color:currentColor}
 
 @media(max-width:980px){
   .bento,html.top .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:10px;
@@ -285,7 +287,7 @@ footer a:hover{text-decoration-color:currentColor}
   <h2 data-t="fin">Начните с одной траты.</h2>
   <div class="cta"><a class="btn signup" data-outside href="#" data-t="go">Начать бесплатно</a><p class="fine" data-t="fine">3 дня бесплатно.</p></div>
 </section>
-<footer><span>© AIFA</span><span>Telegram: <a href="https://t.me/mcsombie" target="_blank" rel="noopener">@mcsombie</a></span><span>Email: <a href="mailto:aifa.finance.app@gmail.com">aifa.finance.app@gmail.com</a></span><span><a href="install.html" data-t="inst">Как поставить AIFA иконкой на телефон</a></span></footer>
+<footer><span>© AIFA</span><span>Telegram: <a href="https://t.me/mcsombie" target="_blank" rel="noopener">@mcsombie</a></span><span>Email: <a href="mailto:aifa.finance.app@gmail.com">aifa.finance.app@gmail.com</a></span><span><a class="ftfaq" href="faq.html" data-t="faq">Частые вопросы</a></span><span><a href="support.html" data-t="sup">Поддержка</a></span><span><a href="privacy.html" data-t="priv">Политика конфиденциальности</a></span></footer>
 
 <script>
 (function(){
@@ -300,7 +302,7 @@ var STR = {
      rcpt:'Чек или QR', rcptC:'сфотографируйте, и покупки разобраны', stmtC:'и другие банки: выписка PDF или Excel',
      freeB:'3 дня', freeC:'всё бесплатно', debt:'Долги и кредиты', debtC:'кто кому должен и когда платёж',
      curC:'кошельки в любой валюте', autoH:'Покупки записываются сами', autoC:'Оплатили картой, и AIFA уже записала трату',
-     n1:'Покупка <b class="nw">4&nbsp;200&nbsp;₸</b>, Magnum', n2:'Записано: Продукты <span class="nw">−4&nbsp;200&nbsp;₸</span>', inst:'Как поставить AIFA иконкой на телефон', fin:'Начните с одной траты.'},
+     n1:'Покупка <b class="nw">4&nbsp;200&nbsp;₸</b>, Magnum', n2:'Записано: Продукты <span class="nw">−4&nbsp;200&nbsp;₸</span>', inst:'Как поставить AIFA иконкой на телефон', faq:'FAQ · Частые вопросы', sup:'Поддержка', priv:'Политика конфиденциальности', fin:'Начните с одной траты.'},
  kk:{h1a:'Ақша есебі', h1b:'бір сөйлеммен.', sub:'Шығысты 5 секундта енгізіңіз. Қалғанын AIFA өзі есептейді.',
      go:'Тегін бастау', go2:'Бастау', fine:'3 күн тегін.', demo:'Демо',
      chatH:'Досыңызға жазғандай', chatC:'AIFA не, қанша және неге екенін өзі түсінеді',
@@ -310,7 +312,7 @@ var STR = {
      rcpt:'Чек не QR', rcptC:'суретке түсіріңіз, сатып алулар бөлінеді', stmtC:'және басқа банктер: PDF не Excel үзінді',
      freeB:'3 күн', freeC:'бәрі тегін', debt:'Қарыздар мен несиелер', debtC:'кім кімге қарыз, төлем қашан',
      curC:'кез келген валютадағы әмияндар', autoH:'Сатып алулар өзі жазылады', autoC:'Картамен төледіңіз, AIFA шығысты бірден жазды',
-     n1:'Сатып алу <b class="nw">4&nbsp;200&nbsp;₸</b>, Magnum', n2:'Жазылды: Азық-түлік <span class="nw">−4&nbsp;200&nbsp;₸</span>', inst:'AIFA-ны телефонға белгіше ретінде қалай қою керек', fin:'Бір шығыстан бастаңыз.'},
+     n1:'Сатып алу <b class="nw">4&nbsp;200&nbsp;₸</b>, Magnum', n2:'Жазылды: Азық-түлік <span class="nw">−4&nbsp;200&nbsp;₸</span>', inst:'AIFA-ны телефонға белгіше ретінде қалай қою керек', faq:'FAQ · Жиі сұрақтар', sup:'Қолдау', priv:'Құпиялылық саясаты', fin:'Бір шығыстан бастаңыз.'},
  en:{h1a:'Track money', h1b:'in one phrase.', sub:'Add a spend in 5 seconds. AIFA does the maths.',
      go:'Start for free', go2:'Start', fine:'3 days free.', demo:'Demo',
      chatH:'Text it like to a friend', chatC:'AIFA works out what, how much and on what',
@@ -320,7 +322,7 @@ var STR = {
      rcpt:'Receipt or QR', rcptC:'snap it, the items are sorted', stmtC:'and other banks: PDF or Excel statements',
      freeB:'3 days', freeC:'everything free', debt:'Debts and loans', debtC:'who owes whom and when to pay',
      curC:'wallets in any currency', autoH:'Purchases record themselves', autoC:'Paid by card, and AIFA has already recorded it',
-     n1:'Purchase <b class="nw">4&nbsp;200&nbsp;₸</b>, Magnum', n2:'Recorded: Groceries <span class="nw">−4&nbsp;200&nbsp;₸</span>', inst:'How to put AIFA on your phone as an icon', fin:'Start with one spend.'}
+     n1:'Purchase <b class="nw">4&nbsp;200&nbsp;₸</b>, Magnum', n2:'Recorded: Groceries <span class="nw">−4&nbsp;200&nbsp;₸</span>', inst:'How to put AIFA on your phone as an icon', faq:'FAQ', sup:'Support', priv:'Privacy Policy', fin:'Start with one spend.'}
 };
 var APP='https://manmanpoove.github.io/AIFA-app/lite/';
 var API = /(^|\.)tail7106db\.ts\.net$/.test(location.hostname) ? '/api/v1' : 'https://aifa.tail7106db.ts.net/api/v1';

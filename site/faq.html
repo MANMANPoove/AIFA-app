@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIFA — Частые вопросы</title>
+<meta name="description" content="Ответы на частые вопросы об AIFA: как начать, как поставить иконкой на телефон, подписка и цены, данные и безопасность.">
+<meta name="theme-color" content="#FBFAF7">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://aifa.tail7106db.ts.net/faq.html">
+<meta property="og:title" content="AIFA — Частые вопросы">
+<meta property="og:description" content="Как начать, как поставить AIFA иконкой на телефон, подписка, данные и безопасность.">
+<meta property="og:image" content="https://aifa.tail7106db.ts.net/og.png">
+<!-- FAQ: the one place the landing footer points to for help. Questions are
+     grouped by topic and open as an accordion; each has an id, so
+     faq.html#install (or any other id) opens and scrolls to that answer.
+     Three languages (?lang=kk|en, else the landing's saved choice or the
+     browser language), text in T below. Answers are trusted HTML written
+     here, so they may carry links. The install questions mirror the FAQ of
+     install.html; keep both true to what the lite build actually does. -->
+<style>
+@font-face{font-family:"Onest";font-weight:400;font-display:swap;src:url(fonts/Onest-Regular.ttf) format("truetype")}
+@font-face{font-family:"Onest";font-weight:600;font-display:swap;src:url(fonts/Onest-SemiBold.ttf) format("truetype")}
+:root{--ink:#1C1917;--paper:#FBFAF7;--card:#FFFFFF;--hair:#E6E1D8;--soft:#6F6A62;--accent:#9C7B58;--ivory:#F1EAE2}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:800px;margin:0 auto;padding:24px 16px 56px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:36px}
+.logo{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:18px}
+.langs{display:flex;gap:6px}
+.langs button{border:1px solid var(--hair);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:14px}
+.langs button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:600}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.12;margin:0 0 14px;font-weight:600;letter-spacing:-.01em}
+.lead{font-size:18px;color:var(--soft);max-width:640px;margin:0 0 24px}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
+.topics a{display:inline-block;border:1px solid var(--hair);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:14px;text-decoration:none}
+.topics a:hover{border-color:var(--ink)}
+h2{font-size:22px;line-height:1.2;margin:44px 0 14px;font-weight:600}
+.faq{display:grid;gap:10px}
+details{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:14px 16px}
+details:target,details.hl{border-color:var(--accent)}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-weight:400;font-size:20px;line-height:1;flex:none}
+details[open] summary::after{content:"−"}
+.a{color:var(--soft);margin-top:10px}
+.a p{margin:0 0 8px}
+.a p:last-child{margin-bottom:0}
+.a ul{margin:0 0 8px;padding-left:20px}
+.a li{margin:0 0 4px}
+.a b{color:var(--ink);font-weight:600}
+.a a{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:var(--ink);color:var(--paper) !important;font-weight:600;font-size:15px;padding:10px 18px;text-decoration:none;margin-top:4px}
+.contact{background:var(--ink);color:var(--paper);border-radius:22px;padding:20px 22px;margin:48px 0 0}
+.contact h2{margin:0 0 6px;font-size:20px}
+.contact p{margin:0 0 14px;color:#D9D3CA}
+.contact .row{display:flex;flex-wrap:wrap;gap:10px}
+.contact a{display:inline-flex;align-items:center;border:1px solid rgba(251,250,247,.35);color:var(--paper);border-radius:999px;padding:8px 16px;text-decoration:none;font-size:15px}
+.contact a:hover{border-color:var(--paper)}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--hair);font-size:14px;color:var(--soft);display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:var(--soft)}
+footer a:hover{color:var(--ink)}
+@media (max-width:640px){
+  header{margin-bottom:24px}
+  .lead{font-size:16px}
+  .contact a{flex:1 1 auto;justify-content:center}
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <a class="logo" href="./"><svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="23" fill="#F1EAE2"/><path d="M50 20 A30 30 0 1 1 22 42" fill="none" stroke="#1C1917" stroke-width="8" stroke-linecap="round"/><circle cx="27" cy="36" r="11" fill="#D98E63"/></svg>AIFA</a>
+  <nav class="langs" aria-label="Язык / Тіл / Language">
+    <button type="button" data-set="ru">RU</button>
+    <button type="button" data-set="kk">KZ</button>
+    <button type="button" data-set="en">EN</button>
+  </nav>
+</header>
+
+<p class="eyebrow" data-t="eb">Помощь</p>
+<h1 data-t="h1">Частые вопросы</h1>
+<p class="lead" data-t="lead">Как начать, как поставить AIFA иконкой на телефон, сколько стоит подписка и что происходит с вашими данными.</p>
+<ul class="topics" id="topics"></ul>
+
+<div id="sections"></div>
+
+<section class="contact">
+  <h2 data-t="ch">Не нашли ответ?</h2>
+  <p data-t="cp">Напишите нам, отвечаем лично, обычно в течение дня.</p>
+  <div class="row">
+    <a href="https://t.me/mcsombie" target="_blank" rel="noopener">Telegram @mcsombie</a>
+    <a href="mailto:aifa.finance.app@gmail.com">aifa.finance.app@gmail.com</a>
+    <a href="support.html" id="supportBtn" data-t="sup">Поддержка</a>
+  </div>
+</section>
+
+<footer>
+  <a href="./" data-t="home">Главная</a>
+  <a href="support.html" data-lang-link data-t="sup">Поддержка</a>
+  <a href="privacy.html" data-lang-link data-t="priv">Политика конфиденциальности</a>
+  <a href="terms.html" data-lang-link data-t="terms">Условия использования</a>
+  <a href="delete-account.html" data-lang-link data-t="del">Удалить аккаунт</a>
+  <a href="install.html" data-lang-link data-t="inst">AIFA иконкой на телефоне</a>
+  <span>© AIFA</span>
+</footer>
+</main>
+
+<script>
+(function () {
+'use strict';
+
+var APP = 'https://manmanpoove.github.io/AIFA-app/lite/';
+
+/* Each section: [anchor id, title, [[question id, question, answer HTML], …]].
+   {L} in an answer becomes "?lang=xx" (empty for Russian) so links keep the
+   language. */
+var T = {
+ru: {
+  page: {
+    title: 'Частые вопросы', eb: 'Помощь', h1: 'Частые вопросы',
+    lead: 'Как начать, как поставить AIFA иконкой на телефон, сколько стоит подписка и что происходит с вашими данными.',
+    ch: 'Не нашли ответ?', cp: 'Напишите нам, отвечаем лично, обычно в течение дня.',
+    home: 'Главная', sup: 'Поддержка', priv: 'Политика конфиденциальности', terms: 'Условия использования',
+    del: 'Удалить аккаунт', inst: 'AIFA иконкой на телефоне'
+  },
+  sections: [
+    ['start', 'Начало', [
+      ['what', 'Что такое AIFA?', '<p>Помощник для учёта личных денег. Вы пишете или говорите трату как другу, например «кофе 1500» или «такси 2300 и обед 3500», а AIFA сама записывает операции, считает балансы кошельков, долги и кредиты и показывает, куда уходят деньги.</p>'],
+      ['begin', 'Как начать?', '<p>Создайте аккаунт по почте или через Google, затем просто напишите первую трату. Короткий тур по приложению можно повторить в «Ещё → Как пользоваться».</p><p><a class="btn" href="' + APP + '{L}" target="_blank" rel="noopener">Открыть AIFA</a></p>'],
+      ['demo', 'Можно попробовать без регистрации?', '<p>Да, на главной странице есть «Демо»: откроется AIFA с примерами операций. Демо живёт 2 часа в этой вкладке браузера. Если понравится, нажмите «Создать свой аккаунт», и записи из демо сохранятся.</p>'],
+      ['input', 'Как вносить траты и доходы?', '<ul><li><b>Текстом</b> в строке ввода: «продукты 4200», «зарплата 350к».</li><li><b>Голосом</b>: нажмите микрофон и скажите.</li><li><b>Чеком</b>: сфотографируйте чек или QR-код, покупки разберутся сами.</li><li><b>Выпиской</b> банка в PDF или Excel.</li><li><b>Автозаписью</b>: на Android AIFA сама записывает покупки по уведомлениям банков («Ещё → Автозапись покупок»).</li></ul><p>Всё, что можно сделать в чате, можно сделать и кнопками.</p>'],
+      ['langs', 'Какие языки понимает AIFA?', '<p>Русский, казахский и английский, и текстом, и голосом. Язык приложения меняется в «Ещё → Язык».</p>'],
+      ['wrong', 'AIFA неправильно поняла запись', '<p>Нажмите на операцию и исправьте её или нажмите «Отменить» сразу после записи. Под ответом AIFA можно поставить 👎: так мы быстрее исправим распознавание.</p>']
+    ]],
+    ['phone', 'AIFA на телефоне', [
+      ['install', 'Как поставить AIFA иконкой на телефон?', '<p>AIFA можно добавить на экран телефона или компьютера, и она будет открываться как обычное приложение, во весь экран и без адресной строки. Из магазина ничего скачивать не нужно.</p><ul><li><b>iPhone</b>: откройте AIFA в Safari → «Поделиться» → «На экран «Домой»» → «Добавить».</li><li><b>Android</b>: откройте AIFA в Chrome → ⋮ → «Установить приложение» (или «Добавить на главный экран») → «Установить».</li><li><b>Проще всего</b>: в самой AIFA откройте «Ещё → Установить как приложение».</li><li><b>Компьютер</b>: в Chrome или Edge нажмите значок установки справа в адресной строке → «Установить».</li></ul><p>Подробная инструкция с картинками для каждого телефона:</p><p><a class="btn" href="install.html{L}">Пошаговая инструкция</a></p>'],
+      ['real', 'Это настоящее приложение?', '<p>Это та же веб-версия AIFA, но с иконкой и в отдельном окне, без браузера. Ваши записи, кошельки и аналитика те же, что на сайте и в телефоне: всё хранится в аккаунте.</p>'],
+      ['relogin', 'Нужно ли входить заново?', '<p>На iPhone да, один раз: приложение с экрана «Домой» не видит вход из Safari. На Android и компьютере обычно вход сохраняется.</p>'],
+      ['nomenu', 'Не вижу нужного пункта в меню', '<p>Проверьте, что страница открыта в Safari (iPhone) или Chrome (Android, компьютер), а не внутри Instagram, Telegram или WhatsApp. В Firefox на компьютере установка недоступна, откройте AIFA в Chrome или Edge.</p>'],
+      ['update', 'Как обновить?', '<p>Никак: при каждом запуске открывается последняя версия.</p>'],
+      ['remove', 'Как удалить иконку?', '<p>Как любое приложение: удержите иконку и выберите «Удалить». Аккаунт и данные при этом не удаляются.</p>'],
+      ['notify', 'Будут ли уведомления?', '<p>Да. Включите их в AIFA: «Ещё → Напоминания» → «Разрешить». На Android и компьютере они работают и в браузере, на iPhone только в AIFA, добавленной на экран «Домой» (iOS 16.4 и новее). Напоминаем редко и только по делу.</p>']
+    ]],
+    ['price', 'Подписка и цены', [
+      ['free', 'Сколько можно пользоваться бесплатно?', '<p>После регистрации все возможности бесплатны в пробный период, карта не нужна. Сколько дней осталось, AIFA показывает в приложении в «Ещё → AIFA Премиум».</p>'],
+      ['cost', 'Сколько стоит подписка?', '<p>AIFA Премиум стоит 1 490 ₸ в месяц. В других странах цена показывается в вашей валюте. Подписку можно отменить в любой момент.</p>'],
+      ['after', 'Что будет, если не оформить подписку?', '<p>Данные никуда не пропадут: вы сможете смотреть операции и аналитику, выгружать их в Excel и удалять. Добавлять новые записи станет нельзя, пока не подключите подписку.</p>'],
+      ['cancel', 'Как отменить подписку?', '<p>Подписку из App Store отменяют в настройках iPhone: «Настройки → ваше имя → Подписки → AIFA», из Google Play в приложении Google Play: «Профиль → Платежи и подписки → Подписки». Отключите её минимум за 24 часа до конца периода.</p>']
+    ]],
+    ['data', 'Данные и безопасность', [
+      ['bank', 'Нужен ли AIFA доступ к моему банку?', '<p>Нет. AIFA не подключается к банковским счетам, не просит данные карт и не хранит пароли от банков. Записи вы вносите сами: текстом, голосом, чеком или выпиской.</p>'],
+      ['where', 'Где хранятся мои данные и кто их видит?', '<p>На сервере AIFA, передаются только по защищённому соединению (HTTPS). Мы не продаём данные, не показываем рекламу и не передаём данные рекламным сетям.</p>'],
+      ['ai', 'Передаются ли данные в сервисы ИИ?', '<p>Только если вы разрешили распознавание с помощью ИИ («Ещё → Распознавание с помощью ИИ», там же согласие можно отозвать). Тогда непонятое сообщение или снимок чека может уйти в модель OpenAI для распознавания, без вашего имени, почты и истории операций. OpenAI не обучает на них свои модели.</p>'],
+      ['voice', 'Сохраняются ли голосовые сообщения?', '<p>Нет. Звук нужен только для распознавания и после этого удаляется; сохраняется только текст сообщения.</p>'],
+      ['export', 'Как выгрузить свои данные?', '<p>В Excel через «Ещё → Экспорт». Это работает и без подписки.</p>'],
+      ['delete', 'Как удалить аккаунт и данные?', '<p>В приложении: «Ещё → Удалить аккаунт». Без приложения: <a href="delete-account.html{L}">страница удаления аккаунта</a>. Аккаунт и все данные удаляются сразу и безвозвратно.</p>'],
+      ['policy', 'Где прочитать политику конфиденциальности?', '<p>Все подробности о том, какие данные мы получаем, зачем и кому они передаются: <a href="privacy.html{L}">Политика конфиденциальности</a>. Правила сервиса: <a href="terms.html{L}">Условия использования</a>.</p>']
+    ]]
+  ]
+},
+kk: {
+  page: {
+    title: 'Жиі қойылатын сұрақтар', eb: 'Көмек', h1: 'Жиі қойылатын сұрақтар',
+    lead: 'Неден бастау керек, AIFA-ны телефонға белгіше ретінде қалай қою керек, жазылым қанша тұрады және деректеріңізбен не болады.',
+    ch: 'Жауап таппадыңыз ба?', cp: 'Бізге жазыңыз, жеке өзіміз жауап береміз, әдетте бір күн ішінде.',
+    home: 'Басты бет', sup: 'Қолдау', priv: 'Құпиялылық саясаты', terms: 'Пайдалану шарттары',
+    del: 'Аккаунтты жою', inst: 'AIFA телефонда белгіше ретінде'
+  },
+  sections: [
+    ['start', 'Бастау', [
+      ['what', 'AIFA деген не?', '<p>Жеке ақшаны есепке алуға арналған көмекші. Шығысты досыңызға жазғандай жазасыз не айтасыз, мысалы «кофе 1500» немесе «такси 2300 және түскі ас 3500», ал AIFA операцияларды өзі жазады, әмияндар қалдығын, қарыздар мен несиелерді есептейді және ақша қайда кететінін көрсетеді.</p>'],
+      ['begin', 'Неден бастау керек?', '<p>Поштамен немесе Google арқылы аккаунт ашыңыз, содан кейін алғашқы шығысты жай жазыңыз. Қосымша бойынша қысқа турды «Тағы → Қалай пайдалану керек» бөлімінде қайталауға болады.</p><p><a class="btn" href="' + APP + '{L}" target="_blank" rel="noopener">AIFA-ны ашу</a></p>'],
+      ['demo', 'Тіркелмей көруге бола ма?', '<p>Иә, басты бетте «Демо» бар: мысал операциялары бар AIFA ашылады. Демо браузердің осы қойындысында 2 сағат жұмыс істейді. Ұнаса, «Өз аккаунтыңызды ашу» басыңыз, демодағы жазбалар сақталады.</p>'],
+      ['input', 'Шығыс пен кірісті қалай енгізуге болады?', '<ul><li><b>Мәтінмен</b> енгізу жолында: «азық-түлік 4200», «жалақы 350к».</li><li><b>Дауыспен</b>: микрофонды басып, айтыңыз.</li><li><b>Чекпен</b>: чекті не QR-кодты суретке түсіріңіз, сатып алулар өздігінен бөлінеді.</li><li>Банктің PDF не Excel <b>үзіндісімен</b>.</li><li><b>Автожазбамен</b>: Android-та AIFA банк хабарландырулары бойынша сатып алуларды өзі жазады («Тағы → Сатып алулар автожазбасы»).</li></ul><p>Чатта істеуге болатынның бәрін батырмалармен де істеуге болады.</p>'],
+      ['langs', 'AIFA қандай тілдерді түсінеді?', '<p>Қазақ, орыс және ағылшын тілдерін, мәтінмен де, дауыспен де. Қосымша тілі «Тағы → Тіл» бөлімінде ауыстырылады.</p>'],
+      ['wrong', 'AIFA жазбаны қате түсінді', '<p>Операцияны басып, түзетіңіз немесе жазылған бойда «Болдырмау» басыңыз. AIFA жауабының астына 👎 қоюға болады: осылай тануды тезірек түзетеміз.</p>']
+    ]],
+    ['phone', 'AIFA телефонда', [
+      ['install', 'AIFA-ны телефонға белгіше ретінде қалай қою керек?', '<p>AIFA-ны телефон не компьютер экранына қосуға болады, ол кәдімгі қосымша сияқты толық экранда, мекенжай жолағынсыз ашылады. Дүкеннен ештеңе жүктеудің қажеті жоқ.</p><ul><li><b>iPhone</b>: AIFA-ны Safari-де ашыңыз → «Бөлісу» → «Басты экранға» → «Қосу».</li><li><b>Android</b>: AIFA-ны Chrome-да ашыңыз → ⋮ → «Қосымшаны орнату» («Установить приложение») → «Орнату».</li><li><b>Ең оңай жолы</b>: AIFA-ның өзінде «Тағы → Қосымша ретінде орнату» ашыңыз.</li><li><b>Компьютер</b>: Chrome не Edge-де мекенжай жолағының оң жағындағы орнату белгісін басыңыз → «Орнату».</li></ul><p>Әр телефонға арналған суретті толық нұсқаулық:</p><p><a class="btn" href="install.html{L}">Қадамдық нұсқаулық</a></p>'],
+      ['real', 'Бұл нағыз қосымша ма?', '<p>Бұл сол AIFA веб-нұсқасы, бірақ белгішесі бар және браузерсіз бөлек терезеде. Жазбаларыңыз, әмияндарыңыз бен талдауыңыз сайттағы және телефондағымен бірдей: бәрі аккаунтта сақталады.</p>'],
+      ['relogin', 'Қайта кіру керек пе?', '<p>iPhone-да иә, бір рет: «Басты экрандағы» қосымша Safari-дегі кіруді көрмейді. Android пен компьютерде әдетте кіру сақталады.</p>'],
+      ['nomenu', 'Мәзірде қажетті тармақ жоқ', '<p>Бет Instagram, Telegram не WhatsApp ішінде емес, Safari-де (iPhone) не Chrome-да (Android, компьютер) ашылғанын тексеріңіз. Компьютердегі Firefox-та орнату жоқ, AIFA-ны Chrome не Edge-де ашыңыз.</p>'],
+      ['update', 'Қалай жаңартамын?', '<p>Ештеңе істеудің қажеті жоқ: әр ашқан сайын соңғы нұсқа ашылады.</p>'],
+      ['remove', 'Белгішені қалай жоямын?', '<p>Кез келген қосымша сияқты: белгішені басып тұрып, «Жою» таңдаңыз. Аккаунт пен деректер жойылмайды.</p>'],
+      ['notify', 'Хабарландырулар бола ма?', '<p>Иә. AIFA-да қосыңыз: «Тағы → Еске салғыштар» → «Рұқсат ету». Android пен компьютерде браузерде де жұмыс істейді, iPhone-да тек «Басты экранға» қосылған AIFA-да (iOS 16.4 және жаңасы). Сирек және тек іс бойынша еске саламыз.</p>']
+    ]],
+    ['price', 'Жазылым және бағалар', [
+      ['free', 'Қанша уақыт тегін пайдалануға болады?', '<p>Тіркелгеннен кейін сынақ кезеңінде барлық мүмкіндіктер тегін, карта керек емес. Қанша күн қалғанын AIFA қосымшада «Тағы → AIFA Премиум» бөлімінде көрсетеді.</p>'],
+      ['cost', 'Жазылым қанша тұрады?', '<p>AIFA Премиум айына 1 490 ₸ тұрады. Басқа елдерде баға сіздің валютаңызда көрсетіледі. Жазылымды кез келген уақытта тоқтатуға болады.</p>'],
+      ['after', 'Жазылым рәсімдемесем не болады?', '<p>Деректер жоғалмайды: операциялар мен талдауды көре аласыз, Excel-ге шығарып, жоя аласыз. Жазылым қосқанша жаңа жазба қосу мүмкін болмайды.</p>'],
+      ['cancel', 'Жазылымды қалай тоқтатамын?', '<p>App Store жазылымы iPhone баптауларында тоқтатылады: «Баптаулар → атыңыз → Жазылымдар → AIFA», Google Play жазылымы Google Play қосымшасында: «Профиль → Төлемдер мен жазылымдар → Жазылымдар». Кезең аяқталуына кемінде 24 сағат қалғанда өшіріңіз.</p>']
+    ]],
+    ['data', 'Деректер және қауіпсіздік', [
+      ['bank', 'AIFA-ға банкіме кіру керек пе?', '<p>Жоқ. AIFA банк шоттарына қосылмайды, карта деректерін сұрамайды және банк құпиясөздерін сақтамайды. Жазбаларды өзіңіз енгізесіз: мәтінмен, дауыспен, чекпен не үзіндімен.</p>'],
+      ['where', 'Деректерім қайда сақталады және оларды кім көреді?', '<p>AIFA серверінде, тек қорғалған байланыс (HTTPS) арқылы беріледі. Біз деректерді сатпаймыз, жарнама көрсетпейміз және жарнама желілеріне бермейміз.</p>'],
+      ['ai', 'Деректер ЖИ қызметтеріне беріле ме?', '<p>Тек ЖИ арқылы тануға рұқсат берсеңіз («Тағы → ЖИ арқылы тану», келісімді сол жерде қайтарып алуға болады). Сонда түсініксіз хабар не чек суреті атыңызсыз, поштаңызсыз және операциялар тарихынсыз тану үшін OpenAI моделіне жіберілуі мүмкін. OpenAI оларда өз модельдерін оқытпайды.</p>'],
+      ['voice', 'Дауыстық хабарлар сақтала ма?', '<p>Жоқ. Дыбыс тек тану үшін керек, кейін жойылады; тек хабар мәтіні сақталады.</p>'],
+      ['export', 'Деректерімді қалай шығарамын?', '<p>Excel-ге «Тағы → Экспорт» арқылы. Бұл жазылымсыз да жұмыс істейді.</p>'],
+      ['delete', 'Аккаунт пен деректерді қалай жоюға болады?', '<p>Қосымшада: «Тағы → Аккаунтты жою». Қосымшасыз: <a href="delete-account.html{L}">аккаунтты жою беті</a>. Аккаунт пен барлық деректер бірден және біржола жойылады.</p>'],
+      ['policy', 'Құпиялылық саясатын қайдан оқуға болады?', '<p>Қандай деректерді, не үшін алатынымыз және кімге беретініміз туралы толығырақ: <a href="privacy.html{L}">Құпиялылық саясаты</a>. Қызмет ережелері: <a href="terms.html{L}">Пайдалану шарттары</a>.</p>']
+    ]]
+  ]
+},
+en: {
+  page: {
+    title: 'FAQ', eb: 'Help', h1: 'Frequently asked questions',
+    lead: 'How to start, how to put AIFA on your phone as an app, what the subscription costs and what happens to your data.',
+    ch: 'Didn’t find an answer?', cp: 'Write to us. We answer personally, usually within a day.',
+    home: 'Home', sup: 'Support', priv: 'Privacy Policy', terms: 'Terms of Use',
+    del: 'Delete account', inst: 'AIFA as an app on your phone'
+  },
+  sections: [
+    ['start', 'Getting started', [
+      ['what', 'What is AIFA?', '<p>An assistant for tracking your personal money. You type or say a spend as you would to a friend, for example “coffee 1500” or “taxi 2300 and lunch 3500”, and AIFA records the operations, keeps wallet balances, debts and loans, and shows where your money goes.</p>'],
+      ['begin', 'How do I start?', '<p>Create an account with email or Google, then just type your first spend. You can replay the short app tour in “More → How to use”.</p><p><a class="btn" href="' + APP + '{L}" target="_blank" rel="noopener">Open AIFA</a></p>'],
+      ['demo', 'Can I try it without signing up?', '<p>Yes, the home page has a “Demo”: AIFA opens with sample operations. The demo lives for 2 hours in that browser tab. If you like it, tap “Create your account” and the demo records are kept.</p>'],
+      ['input', 'How do I add spends and income?', '<ul><li><b>By text</b> in the input line: “groceries 4200”, “salary 350k”.</li><li><b>By voice</b>: tap the microphone and speak.</li><li><b>From a receipt</b>: take a photo of a receipt or its QR code and the items are sorted out.</li><li><b>From a bank statement</b> in PDF or Excel.</li><li><b>Auto-recording</b>: on Android AIFA records purchases from bank notifications by itself (“More → Auto-recorded purchases”).</li></ul><p>Everything you can do in the chat you can also do with buttons.</p>'],
+      ['langs', 'Which languages does AIFA understand?', '<p>English, Russian and Kazakh, both text and voice. Change the app language in “More → Language”.</p>'],
+      ['wrong', 'AIFA misunderstood a record', '<p>Tap the operation to fix it, or tap “Cancel” right after it is recorded. You can give an AIFA answer a 👎: it helps us fix recognition faster.</p>']
+    ]],
+    ['phone', 'AIFA on your phone', [
+      ['install', 'How do I put AIFA on my phone as an app?', '<p>You can add AIFA to the home screen of your phone or computer, and it opens like a normal app: full screen, no address bar. Nothing to download from a store.</p><ul><li><b>iPhone</b>: open AIFA in Safari → Share → “Add to Home Screen” → “Add”.</li><li><b>Android</b>: open AIFA in Chrome → ⋮ → “Install app” (or “Add to Home screen”) → “Install”.</li><li><b>Quickest</b>: inside AIFA open “More → Install as an app”.</li><li><b>Computer</b>: in Chrome or Edge click the install icon at the right of the address bar → “Install”.</li></ul><p>Step-by-step guide with pictures for each device:</p><p><a class="btn" href="install.html{L}">Step-by-step guide</a></p>'],
+      ['real', 'Is this a real app?', '<p>It is the same AIFA web version, with an icon and its own window instead of a browser tab. Your records, wallets and analytics are the same as on the site and on your phone: everything is kept in your account.</p>'],
+      ['relogin', 'Do I need to sign in again?', '<p>On iPhone yes, once: the home-screen app doesn’t see the Safari sign-in. On Android and computers the sign-in usually carries over.</p>'],
+      ['nomenu', 'I can’t find the menu item', '<p>Make sure the page is open in Safari (iPhone) or Chrome (Android, computer), not inside Instagram, Telegram or WhatsApp. Firefox on a computer can’t install sites; open AIFA in Chrome or Edge.</p>'],
+      ['update', 'How do I update it?', '<p>You don’t: it opens the latest version every time.</p>'],
+      ['remove', 'How do I remove the icon?', '<p>Like any app: press and hold the icon and choose “Remove”. Your account and data stay.</p>'],
+      ['notify', 'Will there be notifications?', '<p>Yes. Turn them on in AIFA: “More → Reminders” → “Allow”. On Android and computers they work in the browser too; on iPhone only in AIFA added to the Home Screen (iOS 16.4 and later). We remind rarely and only when it matters.</p>']
+    ]],
+    ['price', 'Subscription and prices', [
+      ['free', 'How long can I use it for free?', '<p>After you sign up, everything is free during the trial, no card needed. AIFA shows how many days are left in “More → AIFA Premium”.</p>'],
+      ['cost', 'How much is the subscription?', '<p>AIFA Premium is 1 490 ₸ a month in Kazakhstan; in other countries the price is shown in your currency. You can cancel at any time.</p>'],
+      ['after', 'What happens if I don’t subscribe?', '<p>Your data stays: you can view operations and analytics, export them to Excel and delete them. You can’t add new records until you subscribe.</p>'],
+      ['cancel', 'How do I cancel the subscription?', '<p>An App Store subscription is cancelled in iPhone settings: “Settings → your name → Subscriptions → AIFA”; a Google Play one in the Google Play app: “Profile → Payments &amp; subscriptions → Subscriptions”. Turn it off at least 24 hours before the end of the period.</p>']
+    ]],
+    ['data', 'Data and security', [
+      ['bank', 'Does AIFA need access to my bank?', '<p>No. AIFA doesn’t connect to bank accounts, doesn’t ask for card details and doesn’t store bank passwords. You add records yourself: by text, voice, receipt or statement.</p>'],
+      ['where', 'Where is my data stored and who sees it?', '<p>On the AIFA server, sent only over a secure connection (HTTPS). We don’t sell data, show ads or share data with ad networks.</p>'],
+      ['ai', 'Is my data sent to AI services?', '<p>Only if you allowed AI recognition (“More → AI recognition”, where you can also withdraw consent). Then a message or receipt photo we couldn’t read may go to an OpenAI model for recognition, without your name, email or operation history. OpenAI doesn’t train its models on it.</p>'],
+      ['voice', 'Are voice messages kept?', '<p>No. The audio is only used for recognition and then deleted; only the text of the message is kept.</p>'],
+      ['export', 'How do I export my data?', '<p>To Excel via “More → Export”. This works without a subscription too.</p>'],
+      ['delete', 'How do I delete my account and data?', '<p>In the app: “More → Delete account”. Without the app: <a href="delete-account.html{L}">account deletion page</a>. The account and all its data are deleted at once and for good.</p>'],
+      ['policy', 'Where can I read the privacy policy?', '<p>Everything about what data we receive, why and who it is shared with: <a href="privacy.html{L}">Privacy Policy</a>. Rules of the service: <a href="terms.html{L}">Terms of Use</a>.</p>']
+    ]]
+  ]
+}
+};
+
+var lang = 'ru';
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+function render() {
+  var L = T[lang], q = lang === 'ru' ? '' : '?lang=' + lang;
+  var open = {};
+  document.querySelectorAll('details[open]').forEach(function (d) { open[d.id] = 1; });
+  document.documentElement.lang = lang;
+  document.title = 'AIFA — ' + L.page.title;
+  document.querySelectorAll('[data-t]').forEach(function (n) {
+    var v = L.page[n.dataset.t];
+    if (typeof v === 'string') n.textContent = v;
+  });
+  document.querySelectorAll('[data-set]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
+  document.querySelectorAll('[data-lang-link]').forEach(function (a) { a.href = a.getAttribute('href').split('?')[0] + q; });
+  document.getElementById('supportBtn').href = 'support.html' + q;
+  document.getElementById('topics').innerHTML = L.sections.map(function (s) {
+    return '<li><a href="#' + s[0] + '">' + esc(s[1]) + '</a></li>';
+  }).join('');
+  document.getElementById('sections').innerHTML = L.sections.map(function (s) {
+    return '<section><h2 id="' + s[0] + '">' + esc(s[1]) + '</h2><div class="faq">' + s[2].map(function (f) {
+      return '<details id="' + f[0] + '"' + (open[f[0]] ? ' open' : '') + '><summary>' + esc(f[1]) + '</summary><div class="a">' + f[2].split('{L}').join(q) + '</div></details>';
+    }).join('') + '</div></section>';
+  }).join('');
+}
+
+// faq.html#install opens that answer and scrolls to it.
+function openHash() {
+  var id = decodeURIComponent(location.hash.slice(1));
+  var d = id && document.getElementById(id);
+  if (d && d.tagName === 'DETAILS') {
+    d.open = true;
+    document.querySelectorAll('details.hl').forEach(function (x) { x.classList.remove('hl'); });
+    d.classList.add('hl');
+    d.scrollIntoView({ block: 'start' });
+  }
+}
+
+function pickLang() {
+  var q = (location.search.match(/[?&]lang=(\w+)/) || [])[1], saved = null;
+  try { saved = localStorage.getItem('aifa-lang'); } catch (e) {}
+  var l = q || saved || (/^kk/i.test(navigator.language || '') ? 'kk' : (!navigator.language || /^(ru|uk|be|ky|uz|tg|hy|az|ka|tk)/i.test(navigator.language)) ? 'ru' : 'en');
+  return T[l] ? l : 'ru';
+}
+
+lang = pickLang();
+document.querySelectorAll('[data-set]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    lang = b.dataset.set;
+    try { localStorage.setItem('aifa-lang', lang); } catch (e) {}
+    render();
+  });
+});
+window.addEventListener('hashchange', openHash);
+render();
+openHash();
+})();
+</script>
+</body>
+</html>
