@@ -14,12 +14,18 @@ self.addEventListener('push', function (e) {
   var m = {};
   try { m = e.data ? e.data.json() : {}; } catch (_) { m = { body: e.data ? e.data.text() : '' }; }
   var data = m.data || {};
+  // An evening reminder carries «Сегодня без трат» as a button: the honest
+  // answer to «what did you spend?» without opening anything. The label comes
+  // in the reminder's own language (data.no_spend).
+  var actions = data.type === 'reminder' && data.no_spend
+    ? [{ action: 'no_spend', title: data.no_spend }] : [];
   e.waitUntil(self.registration.showNotification(m.title || 'AIFA', {
     body: m.body || '',
     icon: 'icons/Icon-192.png',
     badge: 'icons/badge-96.png',
     // One reminder replaces the previous one instead of piling up.
     tag: data.type || 'aifa',
+    actions: actions,
     data: data
   }));
 });
@@ -28,6 +34,7 @@ self.addEventListener('notificationclick', function (e) {
   e.notification.close();
   var data = e.notification.data || {};
   var open = data.type === 'reminder' ? (data.open || 'chat') : (data.type || '');
+  if (e.action === 'no_spend') open = 'no_spend';
   var scope = self.registration.scope;
   e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (list) {
     for (var i = 0; i < list.length; i++) {

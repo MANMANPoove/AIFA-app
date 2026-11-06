@@ -259,6 +259,51 @@
     })();
   </script>
   <script>
+    // Telegram Mini App (core/platform/telegram_webapp_web.dart). The bot's
+    // buttons open this page with `?tg=1`, and Telegram adds its launch data
+    // in the address hash (#tgWebAppData=…). Telegram's script is loaded
+    // only then — every other visit stays as it was — and synchronously, so
+    // window.Telegram.WebApp exists before Flutter starts. The script keeps
+    // the launch data in sessionStorage, so the hash is dropped right after:
+    // the app's own routes live in the hash.
+    (function () {
+      var launched = /[#&]tgWebAppData=/.test(location.hash) || /[?&]tg=1(&|$)/.test(location.search);
+      if (!launched) return;
+      document.write('<script src="https://telegram.org/js/telegram-web-app.js"><\/script>');
+    })();
+  </script>
+  <script>
+    (function () {
+      var tg = window.Telegram && window.Telegram.WebApp;
+      if (!tg) return;
+      if (/[#&]tgWebAppData=/.test(location.hash)) {
+        try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+      }
+      function call(f) { try { f(); } catch (e) {} }
+      call(function () { tg.ready(); });
+      call(function () { tg.expand(); });
+      // A scroll down the operations list must not pull the window closed.
+      call(function () { if (tg.isVersionAtLeast('7.7')) tg.disableVerticalSwipes(); });
+      call(function () { tg.setHeaderColor('#E7E4DD'); });
+      call(function () { tg.setBackgroundColor('#E7E4DD'); });
+      window.__aifaTg = {
+        inside: function () { return !!tg.initData; },
+        initData: function () { return tg.initData || ''; },
+        lang: function () {
+          var u = tg.initDataUnsafe && tg.initDataUnsafe.user;
+          return (u && u.language_code) || '';
+        },
+        // Premium for Stars: resolves 'paid', 'cancelled', 'failed' or 'pending'.
+        openInvoice: function (url) {
+          return new Promise(function (resolve) {
+            try { tg.openInvoice(url, function (status) { resolve(String(status || 'failed')); }); }
+            catch (e) { resolve('failed'); }
+          });
+        }
+      };
+    })();
+  </script>
+  <script>
     // «Ещё → Установить как приложение» (core/platform/install_app_web.dart).
     // Chrome, Edge and Samsung Internet fire beforeinstallprompt once, early,
     // and only that event can open their install dialog later, so it is kept
