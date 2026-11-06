@@ -293,6 +293,8 @@
           var u = tg.initDataUnsafe && tg.initDataUnsafe.user;
           return (u && u.language_code) || '';
         },
+        // A page in the phone's browser, outside Telegram.
+        openLink: function (url) { tg.openLink(url); },
         // Premium for Stars: resolves 'paid', 'cancelled', 'failed' or 'pending'.
         openInvoice: function (url) {
           return new Promise(function (resolve) {
